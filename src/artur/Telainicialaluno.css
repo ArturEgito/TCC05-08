@@ -1,0 +1,154 @@
+/* Estilos para o corpo da página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Song Myung', cursive;
+    background-color: #FFFFFF; /* Cor de fundo da página */
+}
+
+.home-page {
+    position: relative;
+}
+
+/* Estilos para imagens */
+.imagem {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 130px;
+    left: 755px;
+    z-index: 1;
+}
+
+.caixaimagem {
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    top: 1150px;
+    left: 1100px;
+    z-index: 999;
+}
+
+.maca {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 1500px;
+    left: 500px;
+    z-index: 999;
+}
+
+.equipe {
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    top: 1847px;
+    left: 1100px;
+    z-index: 999;
+}
+
+/* Estilos para caixas de texto */
+.caixa1 {
+    width: 1000px;
+    height: 270px;
+    background: linear-gradient(to left, #AAAAAA 50%, #01001F 50%);
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.texto1,
+.texto2,
+.texto3 {
+    color: #000000;
+    font-family: 'Song Myung', cursive;
+    font-size: 28px;
+}
+
+.texto1 {
+    position: absolute;
+    top: 550px;
+    left: 200px;
+}
+
+.texto2 {
+    position: absolute;
+    top: 900px;
+    left: 700px;
+}
+
+.texto3 {
+    position: absolute;
+    top: 1950px;
+    left: 700px;
+}
+
+/* Estilos para links */
+.botao-link {
+    color: inherit;
+    font-family: 'Song Myung', cursive;
+    font-size: 20px;
+    cursor: pointer;
+    transition: filter 0.3s ease-in-out;
+}
+
+.finntech {
+    color: rgb(2, 2, 2);
+    position: absolute;
+    top: 55px;
+    left: 110px;
+    transform: translate(-50%, -50%);
+    font-family: 'Song Myung', cursive;
+    font-size: 35px;
+    z-index: 999;
+}
+
+/* Estilos para círculos */
+.circulo1,
+.circulo2,
+.circulo3,
+.circulo4,
+.circulo5,
+.circulo6,
+.circulo7 {
+    border: 36px solid #8A8A8A;
+    border-radius: 50%;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.circulo1 {
+    width: 300px;
+    height: 300px;
+    top: 10px;
+    left: 30px;
+}
+
+.circulo2 {
+    width: 600px;
+    height: 600px;
+    top: 615px;
+    left: 30px;
+}
+
+/* Adicione os demais círculos com as respectivas propriedades... */
+
+/* Estilos para seção e rodapé */
+.footer-section {
+    height: 57.5em;
+    width: 100%;
+    background: linear-gradient(to right, #AAAAAA 50%, #01001F 50%);
+    display: flex;
+}
+
+.footer {
+    background-color: rgb(255, 255, 255);
+    height: 100em;
+    width: 100%;
+    display: flex;
+}
+
+/* Adicione outros estilos conforme necessário */

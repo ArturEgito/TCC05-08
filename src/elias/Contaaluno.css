@@ -1,0 +1,111 @@
+body {
+    background: linear-gradient(to right, #01001f 50%, #ffffff 50%);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-right: 50px;
+}
+
+.left-content {
+    text-align: left;
+    margin-left: -70px;
+    color: rgb(156, 156, 156);
+    margin-bottom: 7em;
+    margin-top: 190px;
+}
+
+.right-content {
+    margin-bottom: -23px;
+    text-align: right;
+    margin-left: 530px;
+}
+
+.FinnTech {
+    margin-bottom: -21px;
+    font-family: 'Song Myung';
+    text-align: left;
+    margin-left: -280px;
+    margin-top: -320px;
+}
+
+.btn-aluno,
+.btn-escola {
+    margin-right: 10px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    margin-top: -50px;
+}
+
+h1,
+h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 55px;
+}
+
+h3 {
+    font-size: 49px;
+    margin-top: -1px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+.form-control {
+    width: 550px;
+    padding: 21px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-bottom: 13px;
+}
+
+.senha-icon,
+.confirma-senha-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000000;
+}
+
+.senha-icon:hover,
+.confirma-senha-icon:hover {
+    color: #333;
+}
+
+.form-check {
+    margin-bottom: 30px;
+}
+
+#btn-cadastrar {
+    width: 550px;
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.crie-conta {
+    margin-top: 20px;
+    margin-left: 190px;
+    font-size: 20px;
+}

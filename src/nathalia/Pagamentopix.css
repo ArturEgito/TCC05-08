@@ -1,0 +1,62 @@
+/* pagamentodinheiro.css */
+
+.pagamento-dinheiro {
+    font-family: 'Sora', sans-serif;
+}
+
+.caixa {
+    margin: 10px 0;
+}
+
+.texto-FinnTech,
+.texto-sobre-nos,
+.texto-escolas,
+.texto-carrinho,
+.texto-paginacinza,
+.texto-paginaazul,
+.texto-cheetos,
+.caixadinheiro {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.texto-paginacinza {
+    color: gray;
+}
+
+.texto-paginaazul {
+    color: blue;
+}
+
+.circulo1,
+.circulo2,
+.circulo3,
+.circulo4,
+.circulo5,
+.circulo6,
+.circulo7,
+.circulo8,
+.circulo9 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: lightblue;
+    margin: 5px;
+}
+
+.botao-link {
+    text-decoration: none;
+}
+
+.botao {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

@@ -1,0 +1,203 @@
+.caixa {
+    width: 900px;
+    height: 270px;
+    background: linear-gradient(to left, #AAAAAA 50%, #01001F 50%);
+    position: absolute;
+    top: 730px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+section {
+    height: 57.55em;
+    width: 100%;
+    background: linear-gradient(to right, #AAAAAA 50%, #01001F 50%);
+}
+
+footer {
+    background-color: rgb(255, 255, 255);
+    height: 5em;
+    width: 100%;
+}
+
+.caixa-pequena {
+    width: 150px;
+    height: 150px;
+    background-color: #01001F;
+    border: 3px solid #01001F;
+    top: 290px;
+    right: 170px;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.caixa-pequena2 {
+    width: 150px;
+    height: 150px;
+    background-color: #01001F;
+    border: 3px solid #01001F;
+    top: 2280px;
+    right: 880px;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 3;
+}
+
+.circulo1, .circulo2, .circulo3, .circulo4, .circulo5, .circulo6, .circulo7, .circulo8, .circulo9 {
+    border: 36px solid #8A8A8A;
+    border-radius: 50%;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.circulo1 {
+    width: 300px;
+    height: 300px;
+    top: 10px;
+    left: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.circulo2 {
+    width: 600px;
+    height: 600px;
+    top: 615px;
+    left: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.circulo3, .circulo4 {
+    width: 200px;
+    height: 200px;
+    top: 350px;
+    left: 955px;
+    transform: translate(-50%, -50%);
+}
+
+.circulo5 {
+    width: 450px;
+    height: 450px;
+    top: 50px;
+    left: 800px;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+}
+
+.circulo6 {
+    width: 420px;
+    height: 420px;
+    top: 500px;
+    left: 1100px;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+}
+
+.circulo7 {
+    width: 300px;
+    height: 300px;
+    top: 190px;
+    left: 1450px;
+    transform: translate(-50%, -50%);
+}
+
+.circulo8 {
+    width: 300px;
+    height: 300px;
+    top: 170px;
+    left: 1277px;
+    transform: translate(-50%, -50%);
+}
+
+.circulo9 {
+    width: 300px;
+    height: 300px;
+    top: 600px;
+    left: 1820px;
+    transform: translate(-50%, -50%);
+}
+
+.texto-FinnTech {
+    color: rgb(2, 2, 2);
+    position: absolute;
+    top: -670px;
+    left: -140px;
+    transform: translate(-50%, -50%);
+    font-family: 'Song Myung', cursive;
+    font-size: 35px;
+    z-index: 999;
+}
+
+/* Estilos para os textos */
+.texto-sobre-nos, .texto-escolas, .texto-carrinho, .texto-inicio, .texto-servicos, .texto-contatos {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Estilos para a caixa grande */
+.caixa-grande {
+    background-color: #F0F0F0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.texto-dinheiro {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.texto-Opedidovendidoparaestealunocusta,
+.texto-Opedidovendidoparaestealunocusta1,
+.texto-seu-gasto-desse-mes-é {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.texto-valor {
+    font-size: 20px;
+    color: green;
+    font-weight: bold;
+}
+
+.botao-novo-pedido,
+.botao-historico,
+.botao-vendas,
+.botao-orcamento {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.botao-novo-pedido:hover,
+.botao-historico:hover,
+.botao-vendas:hover,
+.botao-orcamento:hover {
+    background-color: #45a049; /* Verde escuro */
+}
+
+.botao-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .caixa {
+        width: 90%;
+        height: auto;
+    }
+
+    .circulo1, .circulo2, .circulo3, .circulo4, .circulo5, .circulo6, .circulo7, .circulo8, .circulo9 {
+        width: 100px;
+        height: 100px;
+    }
+}

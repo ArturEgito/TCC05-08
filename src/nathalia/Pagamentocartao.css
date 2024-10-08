@@ -1,0 +1,132 @@
+/* pagamentocartao.css */
+
+/* Estilo geral */
+body {
+    font-family: 'Sora', sans-serif;
+    background-color: #f8f9fa; /* Cor de fundo leve */
+    margin: 0;
+    padding: 0;
+}
+
+/* Imagens */
+.escola {
+    width: 100%; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+.cheetos {
+    width: 150px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+.cartao2 {
+    width: 200px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+/* Caixas de texto */
+.caixa {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.texto-FinnTech, .texto-sobre-nos, .texto-escolas, .texto-carrinho {
+    font-size: 24px; /* Ajuste conforme necessário */
+    color: #333; /* Cor do texto */
+}
+
+.texto-paginacinza {
+    color: #6c757d; /* Cor cinza */
+    font-size: 16px;
+    text-align: left;
+}
+
+.texto-paginaazul {
+    color: #007bff; /* Cor azul */
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Texto ITB e BELVAL */
+.texto {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ITB, .BELVAL {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Círculos */
+.circulo1, .circulo2, .circulo3, .circulo4, .circulo5,
+.circulo6, .circulo7, .circulo8, .circulo9 {
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Cor dos círculos */
+    width: 50px; /* Ajuste conforme necessário */
+    height: 50px; /* Ajuste conforme necessário */
+    margin: 10px;
+    display: inline-block;
+}
+
+/* Links de navegação */
+.botao-link {
+    text-decoration: none;
+    color: #007bff; /* Cor dos links */
+}
+
+.botao-link:hover {
+    text-decoration: underline;
+}
+
+/* Caixa Grande */
+.caixa-grande {
+    border: 1px solid #ced4da; /* Borda da caixa */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px; /* Ajuste conforme necessário */
+    text-align: center;
+    background-color: #fff; /* Fundo da caixa */
+    border-radius: 8px; /* Cantos arredondados */
+}
+
+/* Estilos para textos dentro da caixa grande */
+.texto-cheetos {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.texto-preco {
+    font-size: 20px;
+    color: #28a745; /* Verde para o preço */
+    margin-bottom: 10px;
+}
+
+/* Caixa da nova seção */
+.nova-caixa {
+    background-color: #f8f9fa; /* Fundo leve */
+    border: 1px solid #ced4da; /* Borda da nova caixa */
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.texto-retireseuproduto {
+    font-size: 14px;
+    color: #495057; /* Cor do texto */
+}
+
+/* Estilo para o botão */
+.botao {
+    background-color: #007bff; /* Cor do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botao:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
