@@ -1,52 +1,72 @@
-/* src/components/SalesHistory/SalesHistory.css */
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;
+    background-color: #000000;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
+    height: 100vh; /* Definindo a altura como 100% da viewport */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+   
+  .container {
+    max-width: 600px; /* Largura máxima de 600px */
+    width: 100%; /* Garante que o container ocupe a largura total até o máximo */
+    padding: 50px;
+    background-color: #5f5f5f;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #003366;
-    border-bottom: 2px solid #003366;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    text-align: center; /* Se desejar o conteúdo centralizado também dentro da div */
+    margin-left: 500px;
+  }
+   
+  h1 {
+    color: #ffffff;
+    border-bottom: 2px solid #4CAF50;
     padding-bottom: 10px;
     margin-bottom: 20px;
-}
-
-table {
+  }
+   
+  .form-group {
+    margin-bottom: 15px;
+  }
+   
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+   
+  input, textarea {
     width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+  }
+   
+  input[type="file"] {
+    padding: 0;
+  }
+   
+  .submit-button {
+    background-color: #0026ff;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+   
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+   
+  .message {
     margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-    color: #003366;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
+    padding: 10px;
+    background-color: #0084ff;
+    color: #31708f;
+    border: 1px solid #00d5ff;
+    border-radius: 4px;
+  }

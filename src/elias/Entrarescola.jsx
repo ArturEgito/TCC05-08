@@ -1,76 +1,108 @@
-import React, { useState } from 'react';
-import './App.css'; // Assume your styles are in App.css
-
-const App = () => {
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [mostrarSenha, setMostrarSenha] = useState(false);
-
-    const mostrarSenhaHandler = () => {
-        setMostrarSenha(!mostrarSenha);
-    };
-
-    const validarFormulario = (e) => {
-        e.preventDefault();
-        // Add your form validation logic here
-        alert('Form submitted'); // Replace with actual submission logic
-    };
-
-    return (
-        <div className="container">
-            <div className="content">
-                <div className="left-content">
-                    <h3 className="FinnTech">FinnTech.</h3>
-                    <h1>Bem vindo <br /> de volta!</h1>
-                </div>
-                <div className="right-content">
-                    <form onSubmit={validarFormulario}>
-                        <div className="crie-conta">
-                            <p>Entrar - Escola</p>
-                        </div>
-                        <div className="informacao">
-                            <p>Coloque seu email cadastrado e sua senha para acessar sua conta.</p>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="email">Email:</label><br />
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="email@dominio.com"
-                                className="form-control"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="senha">Senha:</label><br />
-                            <div className="input-group">
-                                <input
-                                    type={mostrarSenha ? 'text' : 'password'}
-                                    id="senha"
-                                    placeholder="Digite sua senha."
-                                    className="form-control"
-                                    value={senha}
-                                    onChange={(e) => setSenha(e.target.value)}
-                                    required
-                                />
-                                <i className={`senha-icon fas ${mostrarSenha ? 'fa-eye-slash' : 'fa-eye'}`} onClick={mostrarSenhaHandler}></i>
-                            </div>
-                        </div>
-                        <button type="submit" id="btn-cadastrar">Entrar</button>
-                        <div style={{ marginLeft: '2px' }}>
-                            <p><a href="recuperarsenha.html">Esqueceu sua senha?</a></p>
-                        </div>
-                        <div style={{ marginLeft: '2px' }}>
-                            <p>Novo por aqui? <a href="file:///Z:/work/elias/recuperarescola.html">Cadastre-se</a></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+import  { useState } from 'react';
+import '.Entrarescola.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+ 
+function Entrarescola() {
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const [senha, setSenha] = useState('');
+ 
+  const navigate = useNavigate(); // Hook para navegação
+ 
+  const mostrarSenha = () => {
+    setSenhaVisivel(!senhaVisivel);
+  };
+ 
+ 
+ 
+  const validarFormulario = (e) => {
+    e.preventDefault();
+     {
+      alert('As senhas não correspondem. Por favor, digite novamente.');
+      return false;
+    }
+    ;
+  };
+ 
+  return (
+    <div className="container content">
+      <div className="left-content">
+        <div className="FinnTech">
         </div>
-    );
-};
-
-export default App;
+        <h1>Você está<br /> começando a sua jornada!</h1>
+        <h5>Sente-se e aproveite este momento de tranquilidade</h5>
+        <button id="btn-voltar" className="btn btn-primary">Voltar</button>
+      </div>
+      <div className="right-content">
+        <form onSubmit={validarFormulario}>
+         
+         
+          {/* Formulário de criação de conta permanece igual */}
+          <div className="crie-conta">
+            <p>Bem vindo de volta. - Escola</p>
+          </div>
+          <div className="container">
+            <div className="mb-3">
+              <label htmlFor="email">Email:</label><br />
+              <input
+                type="email"
+                id="email"
+                placeholder="email@dominio.com"
+                className="form-control"
+                required
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="senha">Senha:</label><br />
+              <div className="input-group">
+                <input
+                  type={senhaVisivel ? "text" : "password"}
+                  id="senha"
+                  placeholder="Digite sua senha."
+                  className="form-control"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  required
+                />
+                <FontAwesomeIcon
+                  icon={senhaVisivel ? faEyeSlash : faEye}
+                  className="senha-icon"
+                  onClick={mostrarSenha}
+                />
+              </div>
+            </div>
+            <div className="mb-3">
+         
+              <div className="input-group">
+               
+               
+              </div>
+            </div>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="termos-e-condicoes"
+                required
+              />
+              <label
+                className="form-check-label"
+                htmlFor="termos-e-condicoes"
+              >
+                Eu concordo com os termos e condições
+              </label>
+            </div>
+            <button type="submit" id="btn-cadastrar">
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+ 
+export default entrarescola;

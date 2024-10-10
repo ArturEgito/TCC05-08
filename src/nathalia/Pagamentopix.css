@@ -1,62 +1,90 @@
-/* pagamentodinheiro.css */
-
-.pagamento-dinheiro {
+body {
     font-family: 'Sora', sans-serif;
-}
-
-.caixa {
-    margin: 10px 0;
-}
-
-.texto-FinnTech,
-.texto-sobre-nos,
-.texto-escolas,
-.texto-carrinho,
-.texto-paginacinza,
-.texto-paginaazul,
-.texto-cheetos,
-.caixadinheiro {
+    background-color: #f8f9fa; /* Cor de fundo leve */
+    margin: 0;
+    padding: 0;
+  }
+   
+  /* Container para os botões de navegação */
+  .botao-container {
+    display: flex; /* Alinhamento flexível */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    margin-bottom: 20px; /* Espaço abaixo dos botões */
+  }
+   
+  /* Estilo para cada caixa de link */
+  .caixa {
+    text-align: center;
+    margin: 0 10px; /* Margem entre as caixas */
+  }
+   
+  /* Estilo do texto nas caixas */
+  .texto-inicio,
+  .texto-menu,
+  .texto-carrinho,
+  .texto-perfil {
+    color: #007bff; /* Cor azul */
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: -190px;
+    margin-left: 110px;
+  }
+   
+  /* Estilo para o link de navegação */
+  .botao-link {
+    text-decoration: none; /* Remove sublinhado */
+  }
+   
+  /* Caixa Grande */
+  .caixa-grande {
+    border: 1px solid #ced4da; /* Borda da caixa */
+    padding: 50px;
+    margin: 0 auto; /* Centraliza a caixa */
+    max-width: 400px; /* Ajuste conforme necessário */
+    text-align: center;
+    background-color: #fff; /* Fundo da caixa */
+    border-radius: 8px; /* Cantos arredondados */
+    margin-top: -100px;
+    margin-left: 650px;
+  }
+   
+  /* Estilos para textos dentro da caixa grande */
+  .texto-cheetos {
+    font-size: 24px;
     font-weight: bold;
-    font-size: 1.5em;
-}
-
-.texto-paginacinza {
-    color: gray;
-}
-
-.texto-paginaazul {
-    color: blue;
-}
-
-.circulo1,
-.circulo2,
-.circulo3,
-.circulo4,
-.circulo5,
-.circulo6,
-.circulo7,
-.circulo8,
-.circulo9 {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: lightblue;
-    margin: 5px;
-}
-
-.botao-link {
-    text-decoration: none;
-}
-
-.botao {
-    background-color: #4CAF50; /* Verde */
-    color: white;
+  }
+   
+  .texto-preco {
+    font-size: 20px;
+    color: #28a745; /* Verde para o preço */
+    margin-bottom: 10px;
+  }
+   
+  /* Caixa da nova seção */
+  .nova-caixa {
+    background-color: #f8f9fa; /* Fundo leve */
+    border: 1px solid #ced4da; /* Borda da nova caixa */
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+  }
+   
+  .texto-retireseuproduto {
+    font-size: 14px;
+    color: #495057; /* Cor do texto */
+  }
+   
+  /* Estilo para o botão */
+  .botao {
+    background-color: #007bff; /* Cor do botão */
+    color: #fff; /* Cor do texto do botão */
     border: none;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    border-radius: 5px; /* Bordas arredondadas */
     cursor: pointer;
-}
+    font-size: 16px;
+  }
+   
+  .botao:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+  }

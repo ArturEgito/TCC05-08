@@ -1,34 +1,29 @@
-// src/components/PerfilEdit.jsx
 import React from 'react';
-import './PerfilEdit.css';
-
-const PerfilEdit = () => {
+import './Perfilescola.css';
+ 
+const Perfilescola = () => {
     const validarFormulario = (event) => {
         event.preventDefault();
         const senha = document.getElementById("senha").value;
         const confirmaSenha = document.getElementById("confirma-senha").value;
-
+ 
         if (senha !== confirmaSenha) {
             alert("As senhas não correspondem. Por favor, digite novamente.");
             return false;
         }
         // Aqui você pode adicionar a lógica para enviar o formulário.
     };
-
+ 
     return (
         <div className="content">
+            <h1>Edite seu perfil!</h1>
             <div className="form-container">
-                <h1>Edite seu perfil!</h1>
+               
                 <h2>FinnTech</h2>
                 <form onSubmit={validarFormulario} className="d-flex">
-                    <img src="logologin.png" alt="Logo" className="imagem" />
                     <div className="form-group">
-                        <label htmlFor="nome">Nome da Instituição:</label>
+                        <label htmlFor="nome">Nome:</label>
                         <input type="text" id="nome" placeholder="Digite o nome da instituição aqui." className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="cep">Cep:</label>
-                        <input type="text" id="cep" placeholder="Digite seu cep aqui." className="form-control" required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">E-mail:</label>
@@ -61,5 +56,5 @@ const PerfilEdit = () => {
         </div>
     );
 };
-
-export default PerfilEdit;
+ 
+export default Perfilescola;

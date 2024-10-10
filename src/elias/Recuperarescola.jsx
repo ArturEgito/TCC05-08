@@ -1,52 +1,85 @@
-import React from 'react';
-import './ForgotPasswordSchool.css';
-
-const ForgotPasswordSchool = () => {
-  const validarFormulario = (event) => {
-    event.preventDefault(); // Impede o envio padrão do formulário
-    // Aqui você pode adicionar a lógica de validação se necessário
-    window.location.href = "entrar.html"; // Redireciona para a tela de login
+import './Recuperarescola.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
+ 
+function Recuperarescola() {
+;
+ 
+  const navigate = useNavigate(); // Hook para navegação
+ 
+ 
+ 
+ 
+ 
+  const validarFormulario = (e) => {
+    e.preventDefault();
+     {
+      alert('Enviamos um email para você.');
+      return false;
+    }
   };
-
+ 
+ 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="left-content">
-          <div className="FinnTech">
-            <h3>FinnTech.</h3>
-          </div>
-          <h1>Bem vindo</h1>
-          <h1>de volta!</h1>
+    <div className="container content">
+      <div className="left-content">
+        <div className="FinnTech">
         </div>
-        <div className="right-content">
-          <form onSubmit={validarFormulario}>
-            <div className="minha-senha">
-              <p>Esqueci a minha Senha - Escola</p>
-            </div>
-            <div className="informacao">
-              <p>Informe o e-mail da sua conta para enviarmos um e-mail para redefinir a sua senha.</p>
-            </div>
+        <h1>Você está<br /> começando a sua jornada!</h1>
+        <h5>Sente-se e aproveite este momento de tranquilidade</h5>
+        <button id="btn-voltar" className="btn btn-primary">Voltar</button>
+      </div>
+      <div className="right-content">
+        <form onSubmit={validarFormulario}>
+         
+         
+          {/* Formulário de criação de conta permanece igual */}
+          <div className="crie-conta">
+            <p>Recuperar senha. - Escola</p>
+          </div>
+          <div className="container">
             <div className="mb-3">
               <label htmlFor="email">Email:</label><br />
-              <input 
-                type="email" 
-                id="email" 
-                placeholder="email@dominio.com" 
-                className="form-control" 
-                required 
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" 
+              <input
+                type="email"
+                id="email"
+                placeholder="email@dominio.com"
+                className="form-control"
+                required
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
               />
             </div>
-            <button type="submit" id="btn-enviar">Enviar</button>
-            <div style={{ marginLeft: '-2px' }}>
-              <p>Já possui conta? <a href="contaescola.html">Entre aqui</a></p>
+   
+            <div className="mb-3">
+         
+              <div className="input-group">
+               
+               
+              </div>
             </div>
-          </form>
-          <div id="saida-de-dados" className="m-1 p-2 text-center"></div>
-        </div>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="termos-e-condicoes"
+                required
+              />
+              <label
+                className="form-check-label"
+                htmlFor="termos-e-condicoes"
+              >
+                Eu concordo com os termos e condições
+              </label>
+            </div>
+            <button type="submit" id="btn-cadastrar">
+              Enviar
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
-};
-
-export default ForgotPasswordSchool;
+}
+ 
+export default Recuperarescola;
+ 

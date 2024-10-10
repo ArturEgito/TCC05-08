@@ -5,96 +5,107 @@ body {
     display: flex;
     justify-content: start;
     align-items: center;
-}
-
-.content {
+  }
+   
+  .content {
     display: flex;
     align-items: center;
     width: 100%;
     padding-right: 50px;
-}
-
-.left-content {
+    transform: translateX(150px); /* Desloca todo o conteúdo 200px para a direita */
+  }
+   
+  .left-content {
     text-align: left;
-    margin-left: -70px;
-    color: rgb(156, 156, 156);
+    margin-left: 50px;
     margin-bottom: 7em;
-    margin-top: 190px;
-}
-
-.right-content {
-    margin-bottom: -23px;
-    text-align: -23px;
-    margin-left: 530px;
-}
-
-.FinnTech {
-    margin-bottom: -21px;
-    font-family: 'Song Myung';
+    position: relative; /* Adiciona posição relativa */
+    top: 100px; /* Move o bloco para baixo */
+  }
+   
+   
+   
+  .right-content {
     text-align: left;
-    margin-left: -280px;
-    margin-top: -320px;
-}
-
-.btn-aluno,
-.btn-escola {
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+   
+   
+   
+  .btn-aluno,
+  .btn-escola {
     margin-right: 10px;
     border: 1px solid #000000;
     background-color: #ffffff;
     color: #000000;
-    margin-top: -50px;
-}
-
-h1,
-h3 {
+  }
+   
+  h1, h3 {
     color: rgb(255, 255, 255);
-    margin-bottom: 30px;
-}
-
-h1 {
+  }
+   
+  h1 {
     font-size: 55px;
-}
-
-h3 {
+  }
+   
+  h3 {
     font-size: 49px;
-    margin-top: -01px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-.form-control {
-    width: 550px;
-    padding: 21px;
+  }
+   
+  h5 {
+    margin-top: 40px;
+    color: rgb(156, 156, 156);
+  }
+   
+  /* Ajuste das caixas de formulário para ter tamanhos iguais */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  .form-control {
+    width: 100%; /* Use 100% da largura disponível */
+    max-width: 550px; /* Limite máximo de largura */
+    padding: 20px;
     font-size: 17px;
     border-radius: 5px;
     border: 1px solid #000000;
     box-sizing: border-box;
-    margin-bottom: 13px;
-}
-
-.senha-icon,
-.confirma-senha-icon {
+    margin-bottom: 15px;
+  }
+   
+  .senha-icon,
+  .confirma-senha-icon {
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #000000;
-}
-
-.senha-icon:hover,
-.confirma-senha-icon:hover {
+  }
+   
+  .senha-icon:hover,
+  .confirma-senha-icon:hover {
     color: #333;
-}
-
-.form-check {
-    margin-bottom: 30px;
-}
-
-#btn-cadastrar {
-    width: 550px;
-    padding: 10px;
+  }
+   
+  .form-check {
+    margin-bottom: 20px;
+  }
+   
+  #btn-voltar {
+    margin-top: 20px;
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+  }
+   
+  #btn-cadastrar {
+    width: 100%;
+    max-width: 550px;
+    padding: 15px;
     font-size: 17px;
     border-radius: 5px;
     border: 1px solid #000000;
@@ -102,10 +113,10 @@ input[type="password"],
     color: #ffffff;
     cursor: pointer;
     margin-bottom: 10px;
-}
-
-.crie-conta {
+  }
+   
+  .crie-conta {
     margin-top: 20px;
-    margin-left: 190px;
     font-size: 20px;
-}
+  }
+   

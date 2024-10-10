@@ -1,8 +1,7 @@
-// src/components/ProductManager/ProductManager.js
 import React, { useEffect, useState } from 'react';
-import './ProductManager.css';
-
-const ProductManager = () => {
+import './Tab.css';
+ 
+const Tab = () => {
     const [products, setProducts] = useState([]);
     const [priceTable, setPriceTable] = useState({});
     const [formData, setFormData] = useState({
@@ -18,36 +17,36 @@ const ProductManager = () => {
         nome_preco: '',
         preco_unitario: '',
     });
-
+ 
     useEffect(() => {
         loadProducts();
         loadPriceTable();
     }, []);
-
+ 
     const loadProducts = () => {
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
         setProducts(storedProducts);
     };
-
+ 
     const loadPriceTable = () => {
         const storedPrices = JSON.parse(localStorage.getItem('priceTable')) || {};
         setPriceTable(storedPrices);
     };
-
+ 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
+ 
     const handlePriceInputChange = (e) => {
         const { name, value } = e.target;
         setPriceFormData({ ...priceFormData, [name]: value });
     };
-
+ 
     const handleImageChange = (e) => {
         setFormData({ ...formData, imagem: e.target.files[0] });
     };
-
+ 
     const handleProductSubmit = (e) => {
         e.preventDefault();
         const newProduct = {
@@ -58,7 +57,7 @@ const ProductManager = () => {
             data_adicao: new Date(),
             imagem: URL.createObjectURL(formData.imagem),
         };
-
+ 
         const updatedProducts = [...products, newProduct];
         localStorage.setItem('products', JSON.stringify(updatedProducts));
         setProducts(updatedProducts);
@@ -72,7 +71,7 @@ const ProductManager = () => {
             imagem: null,
         });
     };
-
+ 
     const handlePriceSubmit = (e) => {
         e.preventDefault();
         const updatedPriceTable = {
@@ -83,11 +82,11 @@ const ProductManager = () => {
         setPriceTable(updatedPriceTable);
         setPriceFormData({ nome_preco: '', preco_unitario: '' });
     };
-
+ 
     return (
         <div className="container">
             <button className="back-button" onClick={() => window.location.href = 'dinheiro.html'}>Voltar</button>
-            
+           
             <h1>Adicionar Produto</h1>
             <form onSubmit={handleProductSubmit}>
                 <div className="form-group">
@@ -124,7 +123,7 @@ const ProductManager = () => {
                 </div>
                 <input type="submit" value="Adicionar Produto" />
             </form>
-
+ 
             <h1>Lista de Produtos</h1>
             <table id="tabela-produtos">
                 <thead>
@@ -158,8 +157,8 @@ const ProductManager = () => {
                     ))}
                 </tbody>
             </table>
-
-            <h1>Adicionar Produtos à Tabela de Preços Unitários</h1>
+ 
+            <h3>Adicionar Produtos à Tabela de Preços Unitários</h3>
             <form onSubmit={handlePriceSubmit}>
                 <div className="form-group">
                     <label htmlFor="nome_preco">Nome do Produto:</label>
@@ -171,19 +170,19 @@ const ProductManager = () => {
                 </div>
                 <input type="submit" value="Adicionar Preço" />
             </form>
-
+ 
             <table id="tabela-precos-mini">
                 <thead>
                     <tr>
-                        <th>Nome do Produto</th>
-                        <th>Valor Unitário (R$)</th>
+                        <th>Produto</th>
+                        <th>Preço Unitário (R$)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(priceTable).map(([productName, price]) => (
-                        <tr key={productName}>
-                            <td>{productName}</td>
-                            <td>{price.toFixed(2)}</td>
+                    {Object.entries(priceTable).map(([produto, preco]) => (
+                        <tr key={produto}>
+                            <td>{produto}</td>
+                            <td>{preco.toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -191,5 +190,5 @@ const ProductManager = () => {
         </div>
     );
 };
-
-export default ProductManager;
+ 
+export default Tab;

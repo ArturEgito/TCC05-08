@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Carrinho.css'; // Importando o CSS
-
+ 
 const Carrinho = () => {
     const [items, setItems] = useState([
         {
@@ -18,19 +18,19 @@ const Carrinho = () => {
             imgSrc: 'https://i.ibb.co/x330Zrk/2.png',
         },
     ]);
-
+ 
     const [total, setTotal] = useState(0);
     const [pagamento, setPagamento] = useState('');
-
+ 
     useEffect(() => {
         atualizarTotal();
     }, [items]);
-
+ 
     const atualizarTotal = () => {
         const subtotal = items.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
         setTotal(subtotal);
     };
-
+ 
     const handleIncrementar = (id) => {
         setItems((prevItems) =>
             prevItems.map((item) =>
@@ -38,7 +38,7 @@ const Carrinho = () => {
             )
         );
     };
-
+ 
     const handleDecrementar = (id) => {
         setItems((prevItems) =>
             prevItems.map((item) =>
@@ -46,15 +46,15 @@ const Carrinho = () => {
             )
         );
     };
-
+ 
     const handleRemover = (id) => {
         setItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
-
+ 
     const handlePagamentoChange = (e) => {
         setPagamento(e.target.value);
     };
-
+ 
     return (
         <div>
             <header>
@@ -70,13 +70,13 @@ const Carrinho = () => {
                     <i className="fas fa-user-circle"></i>
                 </div>
             </header>
-
+ 
             <main>
                 <div className="carrinho-container">
                     <button id="continue-comprando" onClick={() => window.location.href='file:///Z:/work/isaac/pagina2Cheetos.html'}>
                         ◀️Continue comprando
                     </button>
-                    <h1>Meu Carrinho</h1>
+                   
                     {items.map((item) => (
                         <div className="item" key={item.id}>
                             <img src={item.imgSrc} alt={item.nome} />
@@ -108,21 +108,8 @@ const Carrinho = () => {
                     <button id="pagar" disabled={!pagamento}>Pagar</button>
                 </div>
             </main>
-
-            <footer>
-                <div className="container">
-                    <div>
-                        <h4>Sobre Nós</h4>
-                        <p>Informações sobre a empresa.</p>
-                    </div>
-                    <div className="contatos">
-                        <h4>Contatos</h4>
-                        <p>Email: contato@finntech.com</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };
-
+ 
 export default Carrinho;

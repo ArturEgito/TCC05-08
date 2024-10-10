@@ -1,0 +1,84 @@
+body {
+    background: linear-gradient(to right, #01001f 50%, #ffffff 50%);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+   
+  .content {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 50px;
+    margin-right: 300px;
+    top: 100px;
+  }
+   
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 800px;
+    padding: 20px;
+    margin-top: 150px;
+    margin-left: -250px;
+  }
+   
+  .form-group {
+    font-size: 20px;
+    color: rgb(2, 0, 0);
+    margin-bottom: 30px;
+    width: 49%;
+    height: 120px;
+    margin-top: -30px;
+    margin-left: 600px;
+  }
+   
+  h1{
+    color: rgb(255 0 0);
+    margin-bottom: 30px;
+    margin-left: -170px;
+    margin-top: 10px;
+  }
+   
+   
+   
+  .form-control {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    margin-bottom: 20px;
+  }
+   
+  #btn-voltar {
+    width: 150px;
+    padding: 13px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    left: 230px;
+    bottom: 58px;
+  }
+   
+  #btn-editar {
+    padding: 13px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    bottom: -200px;
+    width: 10%;
+    border-radius: 5px;
+    margin-left: 600px;
+    margin-top: 900px;
+    position: absolute;
+  }
