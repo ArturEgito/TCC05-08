@@ -1,0 +1,123 @@
+/* Container principal */
+.home-container-nova {
+    width: 200%; /* Corrigido para 100% da largura */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa a tela inteira */
+    background-color: #f5f5f5;
+}
+
+/* Header */
+.header-nova {
+    margin-top: 1px;
+    width: 100%; /* Largura total para que o cabeçalho cubra toda a largura */
+    padding: 20px;
+    background-color: #007BFF;
+    display: flex;
+    /* Ajuste para posicionar o conteúdo à esquerda */
+    justify-content: flex-start; /* Substituí space-between por flex-start */
+    align-items: center;
+    color: #fff;
+    margin-left: 1px;
+}
+
+/* Logo substituída por texto */
+.logo-nova {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Navegação */
+.nav-nova {
+    display: flex;
+    gap: 20px;
+}
+
+/* Links de navegação */
+.nav-link-nova {
+    color: #fff; /* Manter a cor branca para os links */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Botões de link */
+.botao-link-nova {
+    background-color: transparent; /* Botão transparente */
+    color: #ffffff; /* Cor do texto do botão */
+    border: 2px solid #ffffff; /* Borda branca */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    text-decoration: none; /* Sem sublinhado */
+    font-weight: bold;
+}
+
+.botao-link-nova:hover {
+    background-color: #ffffff; /* Fundo branco ao passar o mouse */
+    color: #007BFF; /* Texto azul ao passar o mouse */
+}
+
+/* Seção principal */
+.main-section-nova {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center;
+    flex-grow: 1; /* Faz essa seção ocupar o espaço restante */
+    width: 100%; /* Garante que ocupe toda a largura */
+    padding: 50px 20px;
+    background-color: #f0f0f0; /* Apenas para visualização */
+}
+
+/* Conteúdo principal */
+.main-text-nova {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza também horizontalmente */
+}
+
+.main-text-nova h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.main-text-nova p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Rodapé */
+.footer-nova {
+    width: 100%; /* Corrigido para 100% da largura */
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Grade de círculos no rodapé */
+.circle-grid-nova {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+/* Círculos */
+.circle-nova {
+    width: 30px;
+    height: 30px;
+    background-color: #007BFF;
+    border-radius: 50%;
+}
+
+/* Texto do rodapé */
+.footer-text-nova {
+    font-size: 14px;
+}

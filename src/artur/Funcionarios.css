@@ -1,85 +1,86 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-  }
-   
-  .container {
-    max-width: 600px;
-    margin: 20px auto;
-    margin-left: 475px;
-    padding: 20px;
-    background-color: #461f8d;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  }
-   
-  h1 {
-    color: rgb(0, 0, 0);
-    margin-bottom: 30px;
-  }
-   
-  .form-group {
-    margin-bottom: 15px;
-  }
-   
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-   
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-   
-  input[type="file"] {
-    padding: 0;
-  }
-   
-  .submit-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-   
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  .back-button {
-    background-color: #ffffff; /* Cor vermelha para o botão */
-    color: rgb(0, 0, 0);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-   
-  .back-button:hover {
-    background-color: #ffffff; /* Muda a cor ao passar o mouse */
-  }
-   
-   
-  .message {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #000000;
-    color: #31708f;
-    border: 1px solid #bce8f1;
-    border-radius: 4px;
-  }
-   
-   
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* Adicionei uma classe específica para o container para evitar conflitos */
+.funcionarios-container {
+  max-width: 600px;
+  margin: 20px auto;
+  margin-left: 475px;
+  padding: 20px;
+  background-color: #461f8d;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.funcionarios-container h1 {
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+}
+
+.funcionarios-container.form-group {
+  margin-bottom: 15px;
+}
+
+.funcionarios-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.funcionarios-container input,.funcionarios-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.funcionarios-container input[type="file"] {
+  padding: 0;
+}
+
+.funcionarios-container.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.funcionarios-container.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Mantive o botão Voltar com estilos globais, mas pode ser prefixado com.funcionarios-container se necessário */
+.back-button {
+  background-color: #ffffff; /* Cor vermelha para o botão */
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back-button:hover {
+  background-color: #ffffff; /* Muda a cor ao passar o mouse */
+}
+
+/* Mantive a mensagem com estilos globais, mas pode ser prefixada com.funcionarios-container se necessário */
+.message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #000000;
+  color: #31708f;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+}

@@ -1,171 +1,98 @@
-/* src/components/Home/Home.css */
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Song Myung', cursive;
-    background-color: #FFFFFF;
+.telainicial-container { /* Alterado para telainicial-container */
+  width: 280%; /* Corrigido para 100% da largura */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa a tela inteira */
+  background-color: #f5f5f5;
 }
 
-.container {
-    position: relative;
+.telainicial-header { /* Alterado para telainicial-header */
+  margin-top: 1px;
+  width: 100%; /* Largura total para que o cabeçalho cubra toda a largura */
+  padding: 20px;
+  background-color: #007BFF;
+  display: flex;
+  /* Ajuste para posicionar o conteúdo à esquerda */
+  justify-content: flex-start; /* Substituí space-between por flex-start */
+  align-items: center;
+  color: #fff;
+  margin-left: 1px;
 }
 
-/* Estilos para imagens */
-.imagem {
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    top: 130px;
-    left: 755px;
-    z-index: 1;
+.telainicial-logo { /* Alterado para telainicial-logo */
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
 }
 
-.caixaimagem {
-    width: 210px;
-    height: 210px;
-    position: absolute;
-    top: 1150px;
-    left: 1100px;
-    z-index: 999;
+.telainicial-nav { /* Alterado para telainicial-nav */
+  display: flex;
+  gap: 20px;
 }
 
-.maca {
-    width: 220px;
-    height: 220px;
-    position: absolute;
-    top: 1500px;
-    left: 500px;
-    z-index: 999;
+.telainicial-botao-link { /* Alterado para telainicial-botao-link */
+  background-color: transparent; /* Botão transparente */
+  color: #ffffff; /* Cor do texto do botão */
+  border: 2px solid #ffffff; /* Borda branca */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  text-decoration: none; /* Sem sublinhado */
+  font-weight: bold;
 }
 
-.equipe {
-    width: 210px;
-    height: 210px;
-    position: absolute;
-    top: 1847px;
-    left: 1100px;
-    z-index: 999;
+.telainicial-botao-link:hover { /* Alterado para telainicial-botao-link */
+  background-color: #ffffff; /* Fundo branco ao passar o mouse */
+  color: #007BFF; /* Texto azul ao passar o mouse */
 }
 
-/* Estilos para caixas de texto */
-.caixa1 {
-    width: 1000px;
-    height: 270px;
-    background: linear-gradient(to left, #AAAAAA 50%, #01001F 50%);
-    position: absolute;
-    top: 700px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+.telainicial-main-section { /* Alterado para telainicial-main-section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center;
+  flex-grow: 1; /* Faz essa seção ocupar o espaço restante */
+  width: 100%; /* Garante que ocupe toda a largura */
+  padding: 50px 20px;
+  background-color: #f0f0f0; /* Apenas para visualização */
 }
 
-.texto1, .texto2, .texto3 {
-    color: #000000;
-    font-family: 'Song Myung', cursive;
-    font-size: 28px;
+.telainicial-main-text { /* Alterado para telainicial-main-text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza também horizontalmente */
 }
 
-.texto1 {
-    position: absolute;
-    top: 550px;
-    left: 200px;
+.telainicial-main-text h1 {
+  font-size: 36px;
+  color: #333;
 }
 
-.texto2 {
-    position: absolute;
-    top: 900px;
-    left: 700px;
+.telainicial-footer { /* Alterado para telainicial-footer */
+  width: 100%; /* Corrigido para 100% da largura */
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.texto3 {
-    position: absolute;
-    top: 1950px;
-    left: 700px;
+.telainicial-circle-grid { /* Alterado para telainicial-circle-grid */
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
-/* Estilos para links */
-.botao-link {
-    color: inherit;
-    font-family: 'Song Myung', cursive;
-    font-size: 25px;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
+.telainicial-circle { /* Alterado para telainicial-circle */
+  width: 30px;
+  height: 30px;
+  background-color: #007BFF;
+  border-radius: 50%;
 }
 
-/* Estilos para círculos */
-.circulo1, .circulo2, .circulo3, .circulo4, .circulo5, .circulo6, .circulo7 {
-    border: 36px solid #8A8A8A;
-    border-radius: 50%;
-    position: absolute;
-    box-sizing: border-box;
-}
-
-.circulo1 {
-    width: 300px;
-    height: 300px;
-    top: 10px;
-    left: 30px;
-}
-
-.circulo2 {
-    width: 600px;
-    height: 600px;
-    top: 615px;
-    left: 30px;
-}
-
-.circulo3 {
-    width: 200px;
-    height: 200px;
-    top: 350px;
-    left: 955px;
-    filter: blur(10px);
-}
-
-.circulo4 {
-    width: 200px;
-    height: 200px;
-    top: 350px;
-    left: 955px;
-}
-
-.circulo5 {
-    width: 450px;
-    height: 450px;
-    top: 50px;
-    left: 800px;
-    opacity: 20%;
-}
-
-.circulo6 {
-    width: 420px;
-    height: 420px;
-    top: 500px;
-    left: 1100px;
-    opacity: 20%;
-}
-
-.circulo7 {
-    width: 300px;
-    height: 300px;
-    top: 190px;
-    left: 1450px;
-}
-
-/* Estilos para seção e rodapé */
-section {
-    height: 57.5em;
-    width: 100%;
-    background: linear-gradient(to right, #AAAAAA 50%, #01001F 50%);
-    display: flex;
-}
-
-footer {
-    background-color: rgb(255, 255, 255);
-    height: 100em;
-    width: 100%;
-    display: flex;
+.telainicial-footer-text { /* Alterado para telainicial-footer-text */
+  font-size: 14px;
 }

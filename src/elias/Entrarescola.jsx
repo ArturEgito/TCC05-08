@@ -105,4 +105,4 @@ function Entrarescola() {
   );
 }
  
-export default entrarescola;
+export default Entrarescola;

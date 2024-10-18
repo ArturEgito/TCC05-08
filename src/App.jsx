@@ -1,42 +1,63 @@
-import  { useState } from 'react';
+import { useState } from'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
- 
+import { useNavigate } from'react-router-dom';
+import { Link } from'react-router-dom';
+
 function App() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [confirmaSenhaVisivel, setConfirmaSenhaVisivel] = useState(false);
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
-  const navigate = useNavigate(); // Hook para navegação
- 
+  const navigate = useNavigate();
+
   const mostrarSenha = () => {
     setSenhaVisivel(!senhaVisivel);
   };
- 
+
   const mostrarConfirmaSenha = () => {
     setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
   };
- 
-  const validarFormulario = (e) => {
+
+  const validarFormulario = async (e) => {
     e.preventDefault();
-    if (senha !== confirmaSenha) {
+    if (senha!== confirmaSenha) {
       alert('As senhas não correspondem. Por favor, digite novamente.');
       return false;
     }
-    return true;
+
+    try {
+      const resposta = await fetch('http://localhost:3001/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: document.getElementById('nome').value,
+          email: document.getElementById('email').value,
+          telefone: document.getElementById('telefone').value,
+          senha: senha, 
+        }),
+      });
+
+      const dados = await resposta.json();
+      if (dados.message) {
+        alert(dados.message);
+        // Redirecionamento para a tela de início
+        navigate('/telainicial');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+    }
   };
- 
+
   return (
     <div className="container content">
       <div className="left-content">
         <div className="FinnTech">
         </div>
-        <h1>Você está<br /> começando a sua jornada!</h1>
+        <h1>Você está começando a sua jornada!</h1>
         <h5>Sente-se e aproveite este momento de tranquilidade</h5>
-        <button id="btn-voltar" className="btn btn-primary">Voltar</button>
       </div>
       <div className="right-content">
         <form onSubmit={validarFormulario}>
@@ -44,25 +65,24 @@ function App() {
             <button
               type="button"
               className="btn btn-primary btn-aluno"
-              onClick={() => navigate('/tab')} // Navegar para a página do Aluno
+              onClick={() => navigate('/tab')}
             >
               Aluno
             </button>
             <button
               type="button"
               className="btn btn-primary btn-escola"
-              onClick={() => navigate('/historico')} // Navegar para a página da Escola
+              onClick={() => navigate('/contaescola')}
             >
               Escola
             </button>
           </div>
-          {/* Formulário de criação de conta permanece igual */}
           <div className="crie-conta">
             <p>Crie uma conta no FinnTech.</p>
           </div>
           <div className="container">
             <div className="mb-3">
-              <label htmlFor="nome">Nome completo:</label><br />
+              <label htmlFor="nome">Nome completo:</label>
               <input
                 type="text"
                 id="nome"
@@ -74,7 +94,7 @@ function App() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="email">Email:</label><br />
+              <label htmlFor="email">Email:</label>
               <input
                 type="email"
                 id="email"
@@ -85,7 +105,7 @@ function App() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="telefone">Telefone:</label><br />
+              <label htmlFor="telefone">Telefone:</label>
               <input
                 type="text"
                 id="telefone"
@@ -96,10 +116,10 @@ function App() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="senha">Senha:</label><br />
+              <label htmlFor="senha">Senha:</label>
               <div className="input-group">
                 <input
-                  type={senhaVisivel ? "text" : "password"}
+                  type={senhaVisivel? "text" : "password"}
                   id="senha"
                   placeholder="Digite sua senha."
                   className="form-control"
@@ -108,17 +128,17 @@ function App() {
                   required
                 />
                 <FontAwesomeIcon
-                  icon={senhaVisivel ? faEyeSlash : faEye}
+                  icon={senhaVisivel? faEyeSlash : faEye}
                   className="senha-icon"
                   onClick={mostrarSenha}
                 />
               </div>
             </div>
             <div className="mb-3">
-              <label htmlFor="confirme-sua-senha">Confirme sua senha:</label><br />
+              <label htmlFor="confirme-sua-senha">Confirme sua senha:</label>
               <div className="input-group">
                 <input
-                  type={confirmaSenhaVisivel ? "text" : "password"}
+                  type={confirmaSenhaVisivel? "text" : "password"}
                   id="confirme-sua-senha"
                   placeholder="Confirme sua senha."
                   className="form-control"
@@ -127,7 +147,7 @@ function App() {
                   required
                 />
                 <FontAwesomeIcon
-                  icon={confirmaSenhaVisivel ? faEyeSlash : faEye}
+                  icon={confirmaSenhaVisivel? faEyeSlash : faEye}
                   className="confirma-senha-icon"
                   onClick={mostrarConfirmaSenha}
                 />
@@ -153,7 +173,8 @@ function App() {
           </div>
           <div style={{ marginLeft: '15px' }}>
             <p>
-              Já possui conta? <a href="#">Entre aqui</a>
+              Já possui conta? 
+              <Link to="/entraraluno">Entre aqui</Link>
             </p>
           </div>
         </form>
@@ -161,6 +182,5 @@ function App() {
     </div>
   );
 }
- 
+
 export default App;
- 

@@ -1,90 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React from'react';
 import './Historico.css';
- 
-const Historico = () => {
-    const [sales, setSales] = useState([]);
- 
-    useEffect(() => {
-        loadSales();
-    }, []);
- 
-    const loadSales = () => {
-        const salesData = JSON.parse(localStorage.getItem('sales')) || [];
-        setSales(salesData);
-    };
- 
-    // Função para registrar uma venda (caso você queira testar essa funcionalidade)
-    const registerSale = (produtoNome, quantidade, valorUnitario, funcionarioId) => {
-        const id = Date.now();
-        const valorTotal = quantidade * valorUnitario;
-        const now = new Date();
-        const dataVenda = now.toISOString().split('T')[0];
- 
-        const newSale = {
-            id,
-            produto_nome: produtoNome,
-            quantidade,
-            valor_total: valorTotal,
-            data_venda: dataVenda,
-            funcionario_id: funcionarioId,
-        };
- 
-        // Adicionar a venda ao LocalStorage
-        const currentSales = JSON.parse(localStorage.getItem('sales')) || [];
-        currentSales.push(newSale);
-        localStorage.setItem('sales', JSON.stringify(currentSales));
-        loadSales(); // Atualizar tabela
-    };
- 
-    // Função para limpar todas as vendas
-    const clearSales = () => {
-        localStorage.removeItem('sales');
-        setSales([]); // Atualiza o estado para refletir que não há vendas
-    };
- 
-    // Função para voltar à página anterior
-    const handleGoBack = () => {
-        window.history.back();
-    };
- 
+
+const HistoricoVendas = () => { 
+    const dadosHistorico = [ 
+        {
+            idVenda: 1, 
+            dataVenda: '2024-03-01', 
+            nomeProduto: 'cheetos', 
+            quantidadeVendida: 1, 
+            valorTotalVenda: 3.00, 
+            nomeFuncionario: 'Isaque Castrin', 
+            formaPagamento: 'Dinheiro' // Adicionado forma de pagamento
+        },
+        {
+            idVenda: 2, 
+            dataVenda: '2024-03-05', 
+            nomeProduto: 'dolly', 
+            quantidadeVendida: 1, 
+            valorTotalVenda: 2.50, 
+            nomeFuncionario: 'Fabiana Dias', 
+            formaPagamento: 'Cartão de Crédito' // Adicionado forma de pagamento
+        },
+        {
+            idVenda: 3, 
+            dataVenda: '2024-03-10', 
+            nomeProduto: 'cheetos', 
+            quantidadeVendida: 2, 
+            valorTotalVenda: 6.00, 
+            nomeFuncionario: 'Murilo Egito', 
+            formaPagamento: 'Pix' // Adicionado forma de pagamento
+        }
+    ];
+
     return (
-        <div className="container">
-            {/* Botão de voltar no topo */}
-            <button className="submit-button" onClick={handleGoBack}>Voltar</button>
-            <button className="submit-button" onClick={clearSales} style={{ marginLeft: '10px' }}>Apagar Todas as Vendas</button>
-           
-            <table id="tabela-vendas">
-                <thead>
-                    <tr>
-                        <th>ID da Venda</th>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Valor Total (R$)</th>
-                        <th>Data da Venda</th>
-                        <th>ID do Funcionário</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sales.length === 0 ? (
+        <div className="caixa-historico"> 
+            <div className="conteudo-historico"> 
+                <h2>Histórico de Vendas</h2>
+                <table className="tabela-historico"> 
+                    <thead>
                         <tr>
-                            <td colSpan="6" style={{ textAlign: 'center' }}>Nenhuma venda registrada.</td>
+                            <th>ID da Venda</th> 
+                            <th>Data da Venda</th> 
+                            <th>Nome do Produto</th> 
+                            <th>Quantidade Vendida</th> 
+                            <th>Valor Total da Venda (R$)</th> 
+                            <th>Nome do cliente</th> 
+                            <th>Forma de Pagamento</th> {/* Adicionado título da coluna */}
                         </tr>
-                    ) : (
-                        sales.map(sale => (
-                            <tr key={sale.id}>
-                                <td>{sale.id}</td>
-                                <td>{sale.produto_nome}</td>
-                                <td>{sale.quantidade}</td>
-                                <td>{sale.valor_total.toFixed(2)}</td>
-                                <td>{sale.data_venda}</td>
-                                <td>{sale.funcionario_id}</td>
+                    </thead>
+                    <tbody>
+                        {dadosHistorico.map((dados, index) => (
+                            <tr key={index}>
+                                <td>{dados.idVenda}</td>
+                                <td>{dados.dataVenda}</td>
+                                <td>{dados.nomeProduto}</td>
+                                <td>{dados.quantidadeVendida}</td>
+                                <td>R$ {dados.valorTotalVenda.toFixed(2)}</td>
+                                <td>{dados.nomeFuncionario}</td>
+                                <td>{dados.formaPagamento}</td> {/* Adicionado conteúdo da coluna */}
                             </tr>
-                        ))
-                    )}
-                </tbody>
-            </table>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
- 
-export default Historico;
+
+export default HistoricoVendas;

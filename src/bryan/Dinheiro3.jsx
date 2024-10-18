@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css'; // Importando o CSS
+import './Dinheiro3.css'; // Importando o CSS
  
 const Dinheiro3 = () => {
     const [purchases, setPurchases] = useState([]);
