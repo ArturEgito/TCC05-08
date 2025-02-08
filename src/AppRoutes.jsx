@@ -4,7 +4,7 @@ import Contaescola from "./elias/Contaescola";
 import Entraraluno from "./elias/Entraraluno";
 import Telainicial from "./artur/Telainicial"; // Importe o componente Telainicial
 import Telainicio from "./artur/Telainicio"; // Importe o componente Telainicial
-import Carrinho from "./murilo/Carrinho";
+import Carrinho from "./bryan/Carrinho";
 import PaginaEditarPerfil from "./isaac/PaginaEditarPerfil"; // Importe o componente PaginaEditarPerfil
 import Dinheiro3 from "./bryan/Dinheiro3"; // Importe o componente Dinheiro3
 import PagamentoCartao from "./nathalia/PagamentoCartao"; // Importe o componente PagamentoCartao

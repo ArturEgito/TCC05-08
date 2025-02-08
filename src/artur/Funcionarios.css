@@ -1,86 +1,159 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f4f8;
-  margin: 0;
-  padding: 0;
+.produtos-container {
+  padding: 80px 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-left: 550px;
+  min-height: 100vh;
+  margin-top: 100px;
+  background: linear-gradient(135deg, #2196F3, #ffffff);
 }
 
-/* Adicionei uma classe específica para o container para evitar conflitos */
-.funcionarios-container {
-  max-width: 600px;
-  margin: 20px auto;
-  margin-left: 475px;
-  padding: 20px;
-  background-color: #461f8d;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-.funcionarios-container h1 {
-  color: rgb(0, 0, 0);
-  margin-bottom: 30px;
-}
-
-.funcionarios-container.form-group {
-  margin-bottom: 15px;
-}
-
-.funcionarios-container label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.funcionarios-container input,.funcionarios-container textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.funcionarios-container input[type="file"] {
-  padding: 0;
-}
-
-.funcionarios-container.submit-button {
-  background-color: #4CAF50;
+.voltar-botao {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52,152,219,0.3);
 }
 
-.funcionarios-container.submit-button:hover {
-  background-color: #45a049;
+.voltar-botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52,152,219,0.4);
 }
 
-/* Mantive o botão Voltar com estilos globais, mas pode ser prefixado com.funcionarios-container se necessário */
-.back-button {
-  background-color: #ffffff; /* Cor vermelha para o botão */
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 20px;
+.form-produto {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #1565C0;
 }
 
-.back-button:hover {
-  background-color: #ffffff; /* Muda a cor ao passar o mouse */
-}
-
-/* Mantive a mensagem com estilos globais, mas pode ser prefixada com.funcionarios-container se necessário */
-.message {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #000000;
-  color: #31708f;
-  border: 1px solid #bce8f1;
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem;
+}
+
+.peso-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.peso-group input {
+  flex: 1;
+}
+
+.peso-group select {
+  width: 120px;
+}
+
+.mensagem-erro {
+  color: #dc3545;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  background: #FFEBEE;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #FFCDD2;
+}
+
+.botao-adicionar {
+  background: linear-gradient(135deg, #1976D2, #64B5F6);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.botao-adicionar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+}
+
+.tabela-produtos {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #E3F2FD;
+  font-weight: 600;
+  color: #0D47A1;
+}
+
+tr:hover {
+  background-color: #E3F2FD !important;
+}
+
+@media (max-width: 768px) {
+  .produtos-container {
+    padding: 60px 1rem 1rem;
+    background: linear-gradient(150deg, #2196F3, #ffffff);
+  }
+  
+  .form-produto {
+    padding: 1.5rem;
+  }
+  
+  th, td {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .peso-group {
+    flex-direction: column;
+  }
+  
+  .peso-group select {
+    width: 100%;
+  }
+  
+  .voltar-botao {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }

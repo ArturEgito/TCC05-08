@@ -1,122 +1,173 @@
+/* Estilos globais */
 body {
-    background: linear-gradient(to right, #01001f 50%, #ffffff 50%);
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Container principal */
+.contaescola-container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+/* Seção esquerda */
+.left-content-escola {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-content-escola h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.left-content-escola h5 {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+}
+
+/* Seção direita (formulário) */
+.right-content-escola {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 860px;
+  margin-left: 200px;
+  width: 300%;
+}
+
+.botoes-selecao-escola {
+  margin-bottom: 40px;
+}
+
+.btn-aluno-conta,
+.btn-escola-conta {
+  padding: 12px 25px;
+  margin-right: 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-aluno-conta {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.btn-escola-conta {
+  background-color: #007bff;
+  color: white !important;
+  border: 1px solid #007bff;
+}
+
+/* Formulário */
+.formulario-cadastro-escola {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grupo-form-escola {
+  margin-bottom: 1.5rem;
+}
+
+.grupo-form-escola label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input-group {
+  position: relative;
+}
+
+/* Campos de entrada */
+input.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Ícones de senha */
+.senha-icon,
+.confirma-senha-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}
+
+/* Botão de cadastro */
+.btn-cadastrar-escola {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cadastrar-escola:hover {
+  background-color: #218838;
+}
+
+/* Termos e condições */
+.termos-condicoes-escola {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Link de login */
+.login-link-escola {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link-escola a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .contaescola-container {
+    flex-direction: column;
   }
-   
-  .content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding-right: 50px;
-    transform: translateX(150px); /* Desloca todo o conteúdo 200px para a direita */
+  
+  .left-content-escola,
+  .right-content-escola {
+    padding: 30px;
   }
-   
-  .left-content {
-    text-align: left;
-    margin-left: 50px;
-    margin-bottom: 7em;
-    position: relative; /* Adiciona posição relativa */
-    top: 100px; /* Move o bloco para baixo */
+  
+  .left-content-escola h1 {
+    font-size: 2.5rem;
   }
-   
-   
-   
-  .right-content {
-    text-align: left;
-    margin-left: 50px;
-    margin-top: 50px;
-  }
-   
-   
-   
-  .btn-aluno,
-  .btn-escola {
-    margin-right: 10px;
-    border: 1px solid #000000;
-    background-color: #ffffff;
-    color: #000000;
-  }
-   
-  h1, h3 {
-    color: rgb(255, 255, 255);
-  }
-   
-  h1 {
-    font-size: 55px;
-  }
-   
-  h3 {
-    font-size: 49px;
-  }
-   
-  h5 {
-    margin-top: 40px;
-    color: rgb(156, 156, 156);
-  }
-   
-  /* Ajuste das caixas de formulário para ter tamanhos iguais */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  .form-control {
-    width: 100%; /* Use 100% da largura disponível */
-    max-width: 550px; /* Limite máximo de largura */
-    padding: 20px;
-    font-size: 17px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-  }
-   
-  .senha-icon,
-  .confirma-senha-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #000000;
-  }
-   
-  .senha-icon:hover,
-  .confirma-senha-icon:hover {
-    color: #333;
-  }
-   
-  .form-check {
-    margin-bottom: 20px;
-  }
-   
-  #btn-voltar {
-    margin-top: 20px;
-    width: 150px;
-    height: 45px;
-    font-size: 20px;
-    border: 1px solid #000000;
-    background-color: #ffffff;
-    color: #000000;
-  }
-   
-  #btn-cadastrar {
-    width: 100%;
-    max-width: 550px;
-    padding: 15px;
-    font-size: 17px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    background-color: #007bff;
-    color: #ffffff;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-   
-  .crie-conta {
-    margin-top: 20px;
-    font-size: 20px;
-  }
-   
+}

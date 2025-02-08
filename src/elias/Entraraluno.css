@@ -20,7 +20,7 @@ body {
     margin-left: 50px;
     margin-bottom: 7em;
     position: relative; /* Adiciona posição relativa */
-    top: 100px; /* Move o bloco para baixo */
+    top: -70px; /* Move o bloco para baixo */
   }
    
    

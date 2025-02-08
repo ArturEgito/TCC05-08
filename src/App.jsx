@@ -1,10 +1,10 @@
-import { useState } from'react';
+import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from'react-router-dom';
-import { Link } from'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
@@ -12,6 +12,17 @@ function App() {
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
   const navigate = useNavigate();
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [selectedSchool, setSelectedSchool] = useState('');
+
+  const escolas = [
+    'Escola Municipal de Ensino Fundamental',
+    'Colégio Estadual de Educação Profissional',
+    'Instituto Federal de Educação Tecnológica',
+    'Escola Particular de Excelência',
+    'Centro Educacional Comunitário'
+  ];
 
   const mostrarSenha = () => {
     setSenhaVisivel(!senhaVisivel);
@@ -21,11 +32,21 @@ function App() {
     setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
   };
 
+  const handleSchoolChange = (event) => {
+    setSelectedSchool(event.target.value);
+  };
+
   const validarFormulario = async (e) => {
     e.preventDefault();
-    if (senha!== confirmaSenha) {
+    
+    if (senha !== confirmaSenha) {
       alert('As senhas não correspondem. Por favor, digite novamente.');
-      return false;
+      return;
+    }
+
+    if (!selectedSchool) {
+      alert('Por favor, selecione uma escola.');
+      return;
     }
 
     try {
@@ -35,19 +56,22 @@ function App() {
         body: JSON.stringify({
           nome: document.getElementById('nome').value,
           email: document.getElementById('email').value,
-          telefone: document.getElementById('telefone').value,
-          senha: senha, 
+          escola: selectedSchool,
+          senha: senha,
         }),
       });
 
       const dados = await resposta.json();
-      if (dados.message) {
-        alert(dados.message);
-        // Redirecionamento para a tela de início
-        navigate('/telainicial');
+
+      if (!resposta.ok) {
+        throw new Error(dados.message || 'Erro no servidor');
       }
+
+      navigate('/telainicial');
+
     } catch (error) {
-      console.error('Erro ao enviar dados:', error);
+      console.error('Erro:', error);
+      alert(error.message);
     }
   };
 
@@ -61,22 +85,6 @@ function App() {
       </div>
       <div className="right-content">
         <form onSubmit={validarFormulario}>
-          <div>
-            <button
-              type="button"
-              className="btn btn-primary btn-aluno"
-              onClick={() => navigate('/tab')}
-            >
-              Aluno
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary btn-escola"
-              onClick={() => navigate('/contaescola')}
-            >
-              Escola
-            </button>
-          </div>
           <div className="crie-conta">
             <p>Crie uma conta no FinnTech.</p>
           </div>
@@ -105,21 +113,30 @@ function App() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="telefone">Telefone:</label>
-              <input
-                type="text"
-                id="telefone"
-                placeholder="(11) 99999-9999"
-                className="form-control"
-                pattern="[0-9]{11}"
-                title="Por favor, digite exatamente 11 números"
-              />
+              <label>Selecione sua escola:</label>
+              {escolas.map((escola, index) => (
+                <div className="form-check" key={index}>
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="escola"
+                    value={escola}
+                    id={`escola-${index}`}
+                    onChange={handleSchoolChange}
+                    checked={selectedSchool === escola}
+                    required
+                  />
+                  <label className="form-check-label" htmlFor={`escola-${index}`}>
+                    {escola}
+                  </label>
+                </div>
+              ))}
             </div>
             <div className="mb-3">
               <label htmlFor="senha">Senha:</label>
               <div className="input-group">
                 <input
-                  type={senhaVisivel? "text" : "password"}
+                  type={senhaVisivel ? "text" : "password"}
                   id="senha"
                   placeholder="Digite sua senha."
                   className="form-control"
@@ -128,7 +145,7 @@ function App() {
                   required
                 />
                 <FontAwesomeIcon
-                  icon={senhaVisivel? faEyeSlash : faEye}
+                  icon={senhaVisivel ? faEyeSlash : faEye}
                   className="senha-icon"
                   onClick={mostrarSenha}
                 />
@@ -138,7 +155,7 @@ function App() {
               <label htmlFor="confirme-sua-senha">Confirme sua senha:</label>
               <div className="input-group">
                 <input
-                  type={confirmaSenhaVisivel? "text" : "password"}
+                  type={confirmaSenhaVisivel ? "text" : "password"}
                   id="confirme-sua-senha"
                   placeholder="Confirme sua senha."
                   className="form-control"
@@ -147,7 +164,7 @@ function App() {
                   required
                 />
                 <FontAwesomeIcon
-                  icon={confirmaSenhaVisivel? faEyeSlash : faEye}
+                  icon={confirmaSenhaVisivel ? faEyeSlash : faEye}
                   className="confirma-senha-icon"
                   onClick={mostrarConfirmaSenha}
                 />
@@ -176,6 +193,24 @@ function App() {
               Já possui conta? 
               <Link to="/entraraluno">Entre aqui</Link>
             </p>
+          </div>
+          
+          {/* Botões Escola e Aluno movidos para cá */}
+          <div className="botoes-acesso-rapido">
+            <button
+              type="button"
+              className="btn btn-primary btn-aluno"
+              onClick={() => navigate('/tab')}
+            >
+              Aluno
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-escola"
+              onClick={() => navigate('/contaescola')}
+            >
+              Escola
+            </button>
           </div>
         </form>
       </div>

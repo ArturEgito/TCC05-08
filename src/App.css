@@ -1,122 +1,255 @@
-body {
-  background: linear-gradient(to right, #01001f 50%, #ffffff 50%);
-  margin: 0;
-  height: 100vh;
+/* Estilos modernizados */
+.auth-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
- 
-.content {
-  display: flex;
-  align-items: center;
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding-right: 50px;
-  transform: translateX(150px); /* Desloca todo o conteúdo 200px para a direita */
+  height: 100%;
 }
- 
+
+.glassmorphic-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 600px;
+}
+
 .left-content {
-  text-align: left;
-  margin-left: 50px;
-  margin-bottom: 7em;
-  position: relative; /* Adiciona posição relativa */
-  top: 100px; /* Move o bloco para baixo */
+  flex: 1;
+  padding: 40px;
+  background: linear-gradient(45deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8));
+  border-radius: 20px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
- 
- 
- 
+
+.neon-text {
+  color: #fff;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.glow-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
 .right-content {
-  text-align: left;
-  margin-left: 50px;
-  margin-top: 50px;
+  flex: 1;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 20px 20px 0;
+  margin-top: 100px;
 }
- 
- 
- 
-.btn-aluno,
-.btn-escola {
-  margin-right: 10px;
-  border: 1px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
+
+.form-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
 }
- 
-h1, h3 {
-  color: rgb(255, 255, 255);
+
+.form-input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
 }
- 
-h1 {
-  font-size: 55px;
-}
- 
-h3 {
-  font-size: 49px;
-}
- 
-h5 {
-  margin-top: 40px;
-  color: rgb(156, 156, 156);
-}
- 
-/* Ajuste das caixas de formulário para ter tamanhos iguais */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-.form-control {
-  width: 100%; /* Use 100% da largura disponível */
-  max-width: 550px; /* Limite máximo de largura */
-  padding: 20px;
-  font-size: 17px;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-}
- 
-.senha-icon,
-.confirma-senha-icon {
+
+.input-status {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.valid { color: #4CAF50; }
+.invalid { color: #f44336; }
+
+.error-message {
+  color: #f44336;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
-  color: #000000;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
- 
-.senha-icon:hover,
-.confirma-senha-icon:hover {
-  color: #333;
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
 }
- 
-.form-check {
-  margin-bottom: 20px;
+
+.modern-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #6a11cb;
+  margin-right: 10px;
 }
- 
-#btn-voltar {
-  margin-top: 20px;
-  width: 150px;
-  height: 45px;
-  font-size: 20px;
-  border: 1px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
+
+.neon-link {
+  color: #6a11cb;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
- 
-#btn-cadastrar {
-  width: 100%;
-  max-width: 550px;
-  padding: 15px;
-  font-size: 17px;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  background-color: #007bff;
-  color: #ffffff;
-  cursor: pointer;
-  margin-bottom: 10px;
+
+.neon-link:hover {
+  text-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
 }
- 
-.crie-conta {
-  margin-top: 20px;
-  font-size: 20px;
+
+@media (max-width: 768px) {
+  .glassmorphic-card {
+    flex-direction: column;
+    margin: 20px;
+  }
+  
+  .left-content, .right-content {
+    border-radius: 20px;
+  }
 }
- 
+/* Adicione estes estilos ao final do seu arquivo CSS existente */
+
+@media (max-width: 1200px) {
+  .glassmorphic-card {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .left-content, .right-content {
+    border-radius: 20px !important;
+    margin-top: 0 !important;
+    padding: 30px !important;
+  }
+
+  .left-content {
+    border-radius: 20px 20px 0 0 !important;
+  }
+
+  .right-content {
+    border-radius: 0 0 20px 20px !important;
+  }
+
+  .neon-text {
+    font-size: 2rem;
+  }
+
+  .glow-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container.content {
+    padding: 15px;
+  }
+
+  .form-input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .botoes-acesso-rapido {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-aluno, .btn-escola {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .form-check-label {
+    font-size: 14px;
+  }
+
+  .crie-conta p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .left-content h5 {
+    font-size: 1rem;
+  }
+
+  .crie-conta p {
+    font-size: 1.2rem;
+  }
+
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  .form-check-label {
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .senha-icon, .confirma-senha-icon {
+    position: relative;
+    margin-top: 10px;
+    align-self: flex-end;
+    transform: translateY(-40px);
+    right: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  .right-content form > div:last-child {
+    text-align: center;
+  }
+}
+
+/* Ajustes adicionais para inputs de escola */
+@media (max-width: 576px) {
+  .form-check-label {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .form-check-input {
+    margin-top: 4px;
+  }
+}

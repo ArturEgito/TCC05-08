@@ -43,9 +43,16 @@ function Paginaeditarperfil() {
   };
 
   return (
+    
     <div className="container content">
       <div className="left-content">
         <div className="FinnTech">
+        <button 
+  className="voltar-botao" 
+  onClick={() => window.history.back()}
+>
+  ← Voltar
+</button>
         </div>
         <h1>Você está usando os serviços finntech!</h1>
         <h5>Sente-se e aproveite este momento de tranquilidade</h5>
@@ -135,24 +142,15 @@ function Paginaeditarperfil() {
                 />
               </div>
             </div>
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="termos-e-condicoes"
-                required
-              />
-    
-            </div>
             <button type="submit" id="btn-cadastrar">
               Excluir conta
             </button>
           </div>
-    
         </form>
       </div>
     </div>
   );
+  
 }
 
 export default Paginaeditarperfil;

@@ -1,168 +1,243 @@
 import { useState } from "react";
 import './Contaescola.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from'react-router-dom';
-import { Link } from'react-router-dom'; // Importe o Link
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import InputMask from 'react-input-mask';
+import axios from 'axios';
 
 function Contaescola() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [confirmaSenhaVisivel, setConfirmaSenhaVisivel] = useState(false);
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
-  const navigate = useNavigate(); // Hook para navegação
+  const [cep, setCep] = useState('');
+  const [endereco, setEndereco] = useState({
+    logradouro: '',
+    numero: '',
+    bairro: '',
+    cidade: '',
+    uf: ''
+  });
+  const navigate = useNavigate();
 
-  const mostrarSenha = () => {
-    setSenhaVisivel(!senhaVisivel);
-  };
+  const mostrarSenha = () => setSenhaVisivel(!senhaVisivel);
+  const mostrarConfirmaSenha = () => setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
 
-  const mostrarConfirmaSenha = () => {
-    setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
+  const buscarCep = async (cep) => {
+    try {
+      const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+      if (response.data.erro) {
+        alert('CEP não encontrado');
+        return;
+      }
+      setEndereco({
+        ...endereco,
+        logradouro: response.data.logradouro,
+        bairro: response.data.bairro,
+        cidade: response.data.localidade,
+        uf: response.data.uf
+      });
+    } catch (error) {
+      alert('Erro ao buscar CEP');
+    }
   };
 
   const validarFormulario = (e) => {
     e.preventDefault();
-    if (senha!== confirmaSenha) {
+    if (senha !== confirmaSenha) {
       alert('As senhas não correspondem. Por favor, digite novamente.');
-      return false;
+      return;
     }
-    // Redireciona para Telainicial após cadastro
-    navigate('/Telainicio'); 
-    return true;
+    navigate('/Telainicio');
   };
 
   return (
-    <div className="container content">
-      <div className="left-content">
-        <div className="FinnTech">
-        </div>
+    <div className="contaescola-container">
+      <div className="left-content-escola">
         <h1>Você está começando a sua jornada!</h1>
         <h5>Sente-se e aproveite este momento de tranquilidade</h5>
       </div>
-      <div className="right-content">
+
+      <div className="right-content-escola">
         <form onSubmit={validarFormulario}>
-          <div>
+          <div className="botoes-selecao-escola">
             <button
               type="button"
-              className="btn btn-primary btn-aluno"
-              onClick={() => navigate('/tab')} // Navegar para a página do Aluno
+              className="btn-aluno-conta"
+              onClick={() => navigate('/App')}
             >
               Aluno
             </button>
             <button
               type="button"
-              className="btn btn-primary btn-escola"
-              onClick={() => navigate('/contaescola')} // Navegar para a página da Escola
+              className="btn-escola-conta"
+              onClick={() => navigate('/contaescola')}
             >
               Escola
             </button>
           </div>
-          {/* Formulário de criação de conta permanece igual */}
-          <div className="crie-conta">
-            <p>Crie uma conta no FinnTech.</p>
-          </div>
-          <div className="container">
-            <div className="mb-3">
-              <label htmlFor="nome">Nome da instituição:</label>
 
+          <div className="formulario-cadastro-escola">
+            <h2>Crie uma conta no FinnTech</h2>
+
+            <div className="grupo-form-escola">
+              <label>Nome da instituição:</label>
               <input
                 type="text"
-                id="nome"
-                placeholder="Digite seu nome aqui."
+                placeholder="Digite o nome da instituição"
                 className="form-control"
-                pattern="[A-Za-zÀ-ú\s]+"
-                title="Por favor, digite apenas letras"
                 required
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="email">Email:</label>
 
+            <div className="grupo-form-escola">
+              <label>Email:</label>
               <input
                 type="email"
-                id="email"
                 placeholder="email@dominio.com"
                 className="form-control"
                 required
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="telefone">Telefone:</label>
 
-              <input
-                type="text"
-                id="telefone"
-                placeholder="(11) 99999-9999"
-                className="form-control"
-                pattern="[0-9]{11}"
-                title="Por favor, digite exatamente 11 números"
-              />
+            <div className="grupo-form-escola">
+              <label>CEP:</label>
+              <InputMask
+                mask="99999-999"
+                value={cep}
+                onBlur={(e) => buscarCep(e.target.value.replace(/-/g, ''))}
+                onChange={(e) => setCep(e.target.value)}
+              >
+                {(inputProps) => (
+                  <input
+                    {...inputProps}
+                    type="text"
+                    placeholder="XXXXX-XXX"
+                    className="form-control"
+                    required
+                  />
+                )}
+              </InputMask>
             </div>
-            <div className="mb-3">
-              <label htmlFor="senha">Senha:</label>
 
-              <div className="input-group">
+            <div className="grupo-endereco-escola">
+              <div className="grupo-form-escola">
+                <label>Logradouro:</label>
                 <input
-                  type={senhaVisivel? "text" : "password"}
-                  id="senha"
-                  placeholder="Digite sua senha."
+                  type="text"
+                  value={endereco.logradouro}
+                  onChange={(e) => setEndereco({...endereco, logradouro: e.target.value})}
                   className="form-control"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
                   required
                 />
-                <FontAwesomeIcon
-                  icon={senhaVisivel? faEyeSlash : faEye}
-                  className="senha-icon"
-                  onClick={mostrarSenha}
+              </div>
+
+              <div className="grupo-form-escola">
+                <label>Número:</label>
+                <input
+                  type="text"
+                  value={endereco.numero}
+                  onChange={(e) => setEndereco({...endereco, numero: e.target.value})}
+                  className="form-control"
+                  required
+                />
+              </div>
+
+              <div className="grupo-form-escola">
+                <label>Bairro:</label>
+                <input
+                  type="text"
+                  value={endereco.bairro}
+                  onChange={(e) => setEndereco({...endereco, bairro: e.target.value})}
+                  className="form-control"
+                  required
+                />
+              </div>
+
+              <div className="grupo-form-escola">
+                <label>Cidade:</label>
+                <input
+                  type="text"
+                  value={endereco.cidade}
+                  onChange={(e) => setEndereco({...endereco, cidade: e.target.value})}
+                  className="form-control"
+                  required
+                />
+              </div>
+
+              <div className="grupo-form-escola">
+                <label>UF:</label>
+                <input
+                  type="text"
+                  value={endereco.uf}
+                  onChange={(e) => setEndereco({...endereco, uf: e.target.value})}
+                  className="form-control"
+                  required
                 />
               </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="confirme-sua-senha">Confirme sua senha:</label>
 
-              <div className="input-group">
-                <input
-                  type={confirmaSenhaVisivel? "text" : "password"}
-                  id="confirme-sua-senha"
-                  placeholder="Confirme sua senha."
-                  className="form-control"
-                  value={confirmaSenha}
-                  onChange={(e) => setConfirmaSenha(e.target.value)}
-                  required
-                />
-                <FontAwesomeIcon
-                  icon={confirmaSenhaVisivel? faEyeSlash : faEye}
-                  className="confirma-senha-icon"
-                  onClick={mostrarConfirmaSenha}
-                />
+            <div className="grupo-senha-escola">
+              <div className="grupo-form-escola">
+                <label>Senha:</label>
+                <div className="input-group">
+                  <input
+                    type={senhaVisivel ? "text" : "password"}
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    className="form-control"
+                    required
+                  />
+                  <FontAwesomeIcon
+                    icon={senhaVisivel ? faEyeSlash : faEye}
+                    className="senha-icon"
+                    onClick={mostrarSenha}
+                  />
+                </div>
+              </div>
+
+              <div className="grupo-form-escola">
+                <label>Confirme sua senha:</label>
+                <div className="input-group">
+                  <input
+                    type={confirmaSenhaVisivel ? "text" : "password"}
+                    value={confirmaSenha}
+                    onChange={(e) => setConfirmaSenha(e.target.value)}
+                    className="form-control"
+                    required
+                  />
+                  <FontAwesomeIcon
+                    icon={confirmaSenhaVisivel ? faEyeSlash : faEye}
+                    className="confirma-senha-icon"
+                    onClick={mostrarConfirmaSenha}
+                  />
+                </div>
               </div>
             </div>
-            <div className="form-check">
+
+            <div className="termos-condicoes-escola">
               <input
                 type="checkbox"
-                className="form-check-input"
                 id="termos-e-condicoes"
                 required
               />
-              <label
-                className="form-check-label"
-                htmlFor="termos-e-condicoes"
-              >
+              <label htmlFor="termos-e-condicoes">
                 Eu concordo com os termos e condições
               </label>
             </div>
-            <button type="submit" id="btn-cadastrar">
+
+            <button type="submit" className="btn-cadastrar-escola">
               Cadastrar
             </button>
-          </div>
-          <div style={{ marginLeft: '15px' }}>
-            <p>
-              Já possui conta? 
-              <Link to="/entraraluno">Entre aqui</Link>
-            </p>
+
+            <div className="login-link-escola">
+              <p>
+                Já possui conta? 
+                <Link to="/entraraluno"> Entre aqui</Link>
+              </p>
+            </div>
           </div>
         </form>
       </div>

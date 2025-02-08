@@ -1,123 +1,240 @@
-/* Container principal */
-.home-container-nova {
-    width: 200%; /* Corrigido para 100% da largura */
+/* Carrinho.css */
+.main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ocupa a tela inteira */
-    background-color: #f5f5f5;
-}
-
-/* Header */
-.header-nova {
-    margin-top: 1px;
-    width: 100%; /* Largura total para que o cabeçalho cubra toda a largura */
-    padding: 20px;
-    background-color: #007BFF;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .home-header {
+    background: linear-gradient(135deg, #1173cf 0%, #020245 100%);
+    padding: 1.5rem;
     display: flex;
-    /* Ajuste para posicionar o conteúdo à esquerda */
-    justify-content: flex-start; /* Substituí space-between por flex-start */
     align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .home-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #fff;
-    margin-left: 1px;
-}
-
-/* Logo substituída por texto */
-.logo-nova {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-}
-
-/* Navegação */
-.nav-nova {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .home-nav {
     display: flex;
-    gap: 20px;
-}
-
-/* Links de navegação */
-.nav-link-nova {
-    color: #fff; /* Manter a cor branca para os links */
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .nav-link {
+    color: #ffffff;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Botões de link */
-.botao-link-nova {
-    background-color: transparent; /* Botão transparente */
-    color: #ffffff; /* Cor do texto do botão */
-    border: 2px solid #ffffff; /* Borda branca */
-    padding: 10px 20px; /* Espaçamento interno do botão */
-    border-radius: 5px; /* Bordas arredondadas */
-    text-decoration: none; /* Sem sublinhado */
-    font-weight: bold;
-}
-
-.botao-link-nova:hover {
-    background-color: #ffffff; /* Fundo branco ao passar o mouse */
-    color: #007BFF; /* Texto azul ao passar o mouse */
-}
-
-/* Seção principal */
-.main-section-nova {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    text-align: center;
-    flex-grow: 1; /* Faz essa seção ocupar o espaço restante */
-    width: 100%; /* Garante que ocupe toda a largura */
-    padding: 50px 20px;
-    background-color: #f0f0f0; /* Apenas para visualização */
-}
-
-/* Conteúdo principal */
-.main-text-nova {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centraliza também horizontalmente */
-}
-
-.main-text-nova h1 {
-    font-size: 36px;
-    color: #333;
-}
-
-.main-text-nova p {
-    font-size: 18px;
-    margin-top: 10px;
-    color: #666;
-}
-
-/* Rodapé */
-.footer-nova {
-    width: 100%; /* Corrigido para 100% da largura */
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    background: rgb(255, 255, 255);
+  }
+  
+  .main-content {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-/* Grade de círculos no rodapé */
-.circle-grid-nova {
+    padding: 6rem 1rem 2rem; /* Ajuste para o header fixo */
+  }
+  
+  .carrinho-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 5px 25px rgba(255, 255, 255, 0.08);
+    margin: 0 auto;
+  }
+  
+  /* Mantenha o restante do CSS do carrinho original */
+  
+  .hero-title {
+    font-size: 2rem; /* Reduzido o tamanho da fonte */
+    color: #2c3e50;
+    margin-bottom: 1rem; /* Reduzido o margin */
+    line-height: 1.2;
+    margin-top: 40px;
+    margin-left: 60px;
+  }
+  
+  .hero-description {
+    font-size: 1rem; /* Reduzido o tamanho da fonte */
+    color: #7f8c8d;
+    margin-bottom: 1.5rem; /* Reduzido o margin */
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    padding: 0.8rem 2rem; /* Reduzido o padding */
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    margin-left: 60px;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52,152,219,0.4);
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustado o minmax */
+    gap: 1.5rem; /* Reduzido o gap */
+    margin-top: 150px; /* Reduzido o margin */
+    padding: 1rem; /* Reduzido o padding */
+  }
+  
+  .feature-card {
+    background: rgba(37, 117, 252, 0.4); /* Cor principal do checkbox */
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(12, 59, 189, 0.3); /* Sombra com a cor do gradiente */
+    transition: transform 0.3s ease;
+    margin-top: 1px;
+    width: 100%;
+    color: white; /* Texto branco para contraste */
+    margin-left: 70%;
+  }
+  
+  .feature-icon {
+    color: #ffffff; /* Ícones brancos */
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Efeito de neon */
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    background: #2575fc; /* Cor secundária do gradiente ao hover */
+    box-shadow: 0 8px 32px rgba(37, 117, 252, 0.4);
+  }
+  
+  /* Adicione estas classes para os textos */
+  .feature-card h3 {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  .feature-card p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  
+  
+  .feature-icon {
+    font-size: 2rem; /* Reduzido o tamanho da fonte */
+    color: #3498db;
+    margin-bottom: 0.8rem; /* Reduzido o margin */
+  }
+  
+  .home-footer {
+    background: linear-gradient(135deg, #1976d2, #ffffff);
+    color: white;
+    padding: 4rem 1.5rem;
+    width: 145%;
+    margin-left: 0%;
+    height: 10px;
+    margin-top: -10px;
+  }
+  
+  .footer-content {
+    width: 70%; /* Controla a largura do conteúdo */
+    margin-left: 20%; /* Empurra o bloco 30% para direita */
+    text-align: left; /* Alinha o texto dentro do bloco */
+    margin-top: -60px;
+  }
+  
+  .social-links {
     display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-/* Círculos */
-.circle-nova {
-    width: 30px;
-    height: 30px;
-    background-color: #007BFF;
-    border-radius: 50%;
-}
-
-/* Texto do rodapé */
-.footer-text-nova {
-    font-size: 14px;
-}
+    gap: 1rem;
+    margin-left: 20%; /* Posiciona os ícones */
+    transform: translateX(-20%); /* Ajuste fino */
+  }
+  
+  .footer-content p {
+    margin-left: 30%; /* Alinha texto com os ícones */
+    width: 70%;
+    margin-top: -5px;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Reduzido o gap */
+    margin-bottom: 0.8rem; /* Reduzido o margin */
+  }
+  
+  .social-link {
+    color: white;
+    font-size: 1.2rem; /* Reduzido o tamanho da fonte */
+    transition: color 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #3498db;
+  }
+  
+  @media (max-width: 768px) {
+    .home-header {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .hero-title {
+      font-size: 1.8rem; /* Reduzido o tamanho da fonte */
+    }
+  
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home-logo {
+      font-size: 1.2rem; /* Reduzido o tamanho da fonte */
+    }
+  
+    .nav-link {
+      padding: 0.5rem 0.8rem; /* Reduzido o padding */
+    }
+  
+    .hero-title {
+      font-size: 1.5rem; /* Reduzido o tamanho da fonte */
+    }
+  
+    .hero-description {
+      font-size: 0.9rem; /* Reduzido o tamanho da fonte */
+    }
+  
+    .cta-button {
+      padding: 0.6rem 1.5rem; /* Reduzido o padding */
+    }
+  
+    .feature-icon {
+      font-size: 1.5rem; /* Reduzido o tamanho da fonte */
+    }
+  }

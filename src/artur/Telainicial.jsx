@@ -1,42 +1,71 @@
-import React from'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FiClock, FiShoppingCart, FiUser, FiSmartphone } from 'react-icons/fi';
 import './Telainicial.css';
-import { Link } from'react-router-dom'; // Importe o Link
 
 const Telainicial = () => {
   return (
-    <div className="telainicial-container"> {/* Alterado para telainicial-container */}
-      {/* Header com texto de marca ao invés de logo */}
-      <header className="telainicial-header"> {/* Alterado para telainicial-header */}
-        <h1 className="telainicial-logo">FinnTech</h1> {/* Alterado para telainicial-logo */}
-        <nav className="telainicial-nav"> {/* Alterado para telainicial-nav */}
-          <Link to="/" className="telainicial-botao-link nav-link">Início</Link> {/* Alterado para telainicial-botao-link */}
-          <Link to="/menu" className="telainicial-botao-link nav-link">Menu</Link> {/* Alterado para telainicial-botao-link */}
-          <Link to="/paginaeditarperfil" className="telainicial-botao-link nav-link">Perfil</Link> {/* Alterado para telainicial-botao-link */}
-          <Link to="/carrinho" className="telainicial-botao-link nav-link">Carrinho</Link> {/* Alterado para telainicial-botao-link */}
+    <div className="home-container">
+      <header className="home-header">
+        <h1 className="home-logo">FinnTech</h1>
+        <nav className="home-nav">
+          <Link to="/telainicial" className="nav-link">Início</Link>
+          <Link to="/menu" className="nav-link">Menu</Link>
+          <Link to="/paginaeditarperfil" className="nav-link">Perfil</Link>
+          <Link to="/carrinho" className="nav-link">Carrinho</Link>
         </nav>
       </header>
 
-      {/* Seção principal com texto centralizado */}
-      <section className="telainicial-main-section"> {/* Alterado para telainicial-main-section */}
-        <div className="telainicial-main-text"> {/* Alterado para telainicial-main-text */}
-          <h1>Bem-vindo a cantina Escolar</h1>
-          <p>
-            Gerencie o seu tempo na fila da escola de forma eficaz,
-            com a finntech.
+      <main className="main-content">
+        <div className="hero-section">
+          <h1 className="hero-title">
+            Bem-vindo à Cantina Inteligente
+          </h1>
+          <p className="hero-description">
+            Otimize seu tempo na fila da cantina com nosso sistema inteligente de agendamento e pedidos online.
           </p>
+          <Link to="/menu" className="cta-button">
+            Ver Menu
+          </Link>
         </div>
-      </section>
 
-      {/* Rodapé com círculos decorativos e link de marca */}
-      <footer className="telainicial-footer"> {/* Alterado para telainicial-footer */}
-        <div className="telainicial-circle-grid"> {/* Alterado para telainicial-circle-grid */}
-          <div className="telainicial-circle"></div> {/* Alterado para telainicial-circle */}
-          <div className="telainicial-circle"></div> {/* Alterado para telainicial-circle */}
-          <div className="telainicial-circle"></div> {/* Alterado para telainicial-circle */}
-          <div className="telainicial-circle"></div> {/* Alterado para telainicial-circle */}
-          <div className="telainicial-circle"></div> {/* Alterado para telainicial-circle */}
+        <div className="features-grid">
+          <div className="feature-card">
+            <FiClock className="feature-icon" />
+            <h3>Agenda</h3>
+            <p>Escolha o melhor horário para retirar seu pedido sem filas</p>
+          </div>
+          
+          <div className="feature-card">
+            <FiShoppingCart className="feature-icon" />
+            <h3>Pedido Online</h3>
+            <p>Faça seu pedido com antecedência e garanta seu lanche</p>
+          </div>
+          
+          <div className="feature-card">
+            <FiUser className="feature-icon" />
+            <h3>Perfil</h3>
+            <p>Cadastre seus dados</p>
+          </div>
+          
+          <div className="feature-card">
+            <FiSmartphone className="feature-icon" />
+            <h3>Acesso Mobile</h3>
+            <p>Gerencie tudo diretamente do seu celular</p>
+          </div>
         </div>
-        <p className="telainicial-footer-text"> 2024 FinnTech.</p> {/* Alterado para telainicial-footer-text */}
+      </main>
+
+      <footer className="home-footer">
+        <div className="footer-content">
+          <div className="social-links">
+            <a href="/" className="social-link"><FiSmartphone /></a>
+            <a href="/" className="social-link"><FiClock /></a>
+            <a href="/" className="social-link"><FiShoppingCart /></a>
+          </div>
+          <p>&copy; 2024 FinnTech. Todos os direitos reservados.</p>
+          <p>Sistema de Gestão de Cantina Escolar</p>
+        </div>
       </footer>
     </div>
   );
