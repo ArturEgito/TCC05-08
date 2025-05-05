@@ -1,0 +1,149 @@
+/* Contaescola.css */
+:root {
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --accent: #ff6b6b;
+  --text: #2d3436;
+  --background: rgba(255, 255, 255, 0.95);
+}
+
+.auth-container.escola {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  min-height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+@keyframes rotate-back {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.glassmorphic-card.escola {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 100px;
+  margin-top: 200px;
+  width: 90%; /* Largura relativa */
+  max-width: 1200px; /* Largura máxima */
+  min-width: 600px; /* Largura mínima */
+  padding: 40px 60px; /* Espaçamento interno maior */
+  box-sizing: border-box; /* Garante que o padding não some com a largura */
+}
+
+.animated-illustration.escola {
+  position: relative;
+  height: 400px;
+}
+
+.school-building {
+  animation: float-school 4s ease-in-out infinite;
+}
+
+@keyframes float-school {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.book-animation {
+  animation: book-float 2s ease-in-out infinite;
+}
+
+@keyframes book-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.floating-graph {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  animation: graph-scale 3s ease-in-out infinite;
+}
+
+@keyframes graph-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: particle-float 20s infinite linear;
+}
+
+@keyframes particle-float {
+  0% { 
+    transform: translateY(0) translateX(0);
+    opacity: 0; 
+  }
+  50% { 
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(-200vh) translateX(-100px);
+    opacity: 0; 
+  }
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.btn-access {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btn-access.active {
+  background: var(--accent);
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+}
+
+.submit-btn.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .school-building {
+    transform: scale(0.8);
+  }
+  
+  .floating-graph {
+    display: none;
+  }
+}

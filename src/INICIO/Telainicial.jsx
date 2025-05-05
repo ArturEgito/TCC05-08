@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiClock, FiShoppingCart, FiUser, FiSmartphone } from 'react-icons/fi';
-import './Telainicio.css';
+import './Telainicial.css';
 
-const Telainicio = () => {
+const Telainicial = () => {
   return (
     <div className="home-container">
       <header className="home-header">
         <h1 className="home-logo">FinnTech</h1>
         <nav className="home-nav">
-          <Link to="/telainicio" className="nav-link">Início</Link>
-          <Link to="/historico" className="nav-link">Vendas</Link>
-          <Link to="/funcionarios" className="nav-link">Produtos</Link>
-          <Link to="/paginaeditarperfil" className="nav-link">Perfil</Link>
+          <Link to="/telainicial" className="nav-link">Início</Link>
           <Link to="/menu" className="nav-link">Menu</Link>
+          <Link to="/paginaeditarperfil" className="nav-link">Perfil</Link>
+          <Link to="/carrinho" className="nav-link">Carrinho</Link>
+          <Link to="/pedidos" className="nav-link">Pedidos</Link>
         </nav>
       </header>
 
       <main className="main-content">
         <div className="hero-section">
           <h1 className="hero-title">
-            Bem-vindo ao gerenciamento Inteligente
+            Bem-vindo à Cantina Inteligente
           </h1>
           <p className="hero-description">
-            Impulsione suas vendas com nosso sistema inteligente de agendamento e pedidos online.
+            Otimize seu tempo na fila da cantina com nosso sistema inteligente de agendamento e pedidos online.
           </p>
           <Link to="/menu" className="cta-button">
             Ver Menu
@@ -33,20 +33,20 @@ const Telainicio = () => {
         <div className="features-grid">
           <div className="feature-card">
             <FiClock className="feature-icon" />
-            <h3>Organizar</h3>
-            <p>Organize o tempo da sua cantina na escola</p>
+            <h3>Agenda</h3>
+            <p>Escolha o melhor horário para retirar seu pedido sem filas</p>
           </div>
           
           <div className="feature-card">
             <FiShoppingCart className="feature-icon" />
-            <h3>Vendas</h3>
-            <p>Gerencie suas vendas</p>
+            <h3>Pedido Online</h3>
+            <p>Faça seu pedido com antecedência e garanta seu lanche</p>
           </div>
           
           <div className="feature-card">
             <FiUser className="feature-icon" />
-            <h3>Produtos</h3>
-            <p>Cadastre seus produtos</p>
+            <h3>Perfil</h3>
+            <p>Cadastre seus dados</p>
           </div>
           
           <div className="feature-card">
@@ -72,4 +72,4 @@ const Telainicio = () => {
   );
 };
 
-export default Telainicio;
+export default Telainicial;

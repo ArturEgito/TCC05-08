@@ -34,7 +34,7 @@
   }
   
   .nav-link {
-    color: #ffffff;
+    color: #ff0000;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 30px;
@@ -43,7 +43,7 @@
   }
   
   .nav-link:hover {
-    background: rgb(255, 255, 255);
+    background: rgb(252, 6, 6);
   }
   
   .main-content {

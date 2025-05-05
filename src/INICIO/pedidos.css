@@ -1,0 +1,68 @@
+.caixa-pedidos {
+    padding: 2rem;
+    background-color: #f6f6f6;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .conteudo-pedidos {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 28px;
+  }
+  
+  .pedido-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .pedido-card:hover {
+    transform: scale(1.01);
+  }
+  
+  .pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .pedido-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #e63946;
+  }
+  
+  .pedido-info {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .produtos-lista {
+    list-style: none;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    color: #444;
+  }
+  
+  .produtos-lista li::before {
+    content: '🍽️ ';
+    margin-right: 6px;
+  }
+  
+  .total {
+    font-weight: bold;
+    font-size: 16px;
+    color: #111;
+  }
+  

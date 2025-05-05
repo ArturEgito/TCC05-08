@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from'react-router-dom';
-import { Link } from'react-router-dom';
+
 
 function Paginaeditarperfil() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
