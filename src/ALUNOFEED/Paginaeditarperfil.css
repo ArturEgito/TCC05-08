@@ -1,122 +1,163 @@
-body {
-  background: linear-gradient(to right, #01001f 50%, #ffffff 50%);
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+.profile-edit-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
- 
-.content {
-  display: flex;
-  align-items: center;
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+  color: #2d3748;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-photo-section {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e2e8f0;
+}
+
+.profile-photo {
   width: 100%;
-  padding-right: 50px;
-  transform: translateX(150px); /* Desloca todo o conteúdo 200px para a direita */
+  height: 100%;
+  object-fit: cover;
 }
- 
-.left-content {
-  text-align: left;
-  margin-left: 50px;
-  margin-bottom: 7em;
-  position: relative; /* Adiciona posição relativa */
-  top: 100px; /* Move o bloco para baixo */
-}
- 
- 
- 
-.right-content {
-  text-align: left;
-  margin-left: 50px;
-  margin-top: 50px;
-}
- 
- 
- 
-.btn-aluno,
-.btn-escola {
-  margin-right: 10px;
-  border: 1px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
-}
- 
-h1, h3 {
-  color: rgb(255, 255, 255);
-}
- 
-h1 {
-  font-size: 55px;
-}
- 
-h3 {
-  font-size: 49px;
-}
- 
-h5 {
-  margin-top: 40px;
-  color: rgb(156, 156, 156);
-}
- 
-/* Ajuste das caixas de formulário para ter tamanhos iguais */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-.form-control {
-  width: 100%; /* Use 100% da largura disponível */
-  max-width: 550px; /* Limite máximo de largura */
-  padding: 20px;
-  font-size: 17px;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-}
- 
-.senha-icon,
-.confirma-senha-icon {
+
+.camera-icon {
   position: absolute;
-  right: 15px;
+  bottom: 10px;
+  right: 10px;
+  background: #4299e1;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.camera-icon:hover {
+  background: #3182ce;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 2.5rem;
+  width: 100%;
+}
+
+.password-input svg {
+  position: absolute;
+  right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
+  color: #718096;
   cursor: pointer;
-  color: #000000;
 }
- 
-.senha-icon:hover,
-.confirma-senha-icon:hover {
-  color: #333;
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
- 
-.form-check {
-  margin-bottom: 20px;
+
+.save-btn, .cancel-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
- 
-#btn-voltar {
-  margin-top: 100px;
-  width: 150px;
-  height: 45px;
-  font-size: 20px;
-  border: 1px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
+
+.save-btn {
+  background: #4299e1;
+  color: white;
+  border: none;
 }
- 
-#btn-cadastrar {
-  width: 100%;
-  max-width: 550px;
-  padding: 15px;
-  font-size: 17px;
-  border-radius: 5px;
-  border: 1px solid #000000;
-  background-color: #007bff;
-  color: #ffffff;
-  cursor: pointer;
-  margin-bottom: 10px;
+
+.save-btn:hover {
+  background: #3182ce;
 }
- 
-.crie-conta {
-  margin-top: 20px;
-  font-size: 20px;
+
+.cancel-btn {
+  background: #ffffff;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
 }
- 
+
+.cancel-btn:hover {
+  background: #f7fafc;
+}
+
+@media (max-width: 768px) {
+  .profile-edit-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .save-btn, .cancel-btn {
+    width: 100%;
+  }
+}

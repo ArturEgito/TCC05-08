@@ -1,156 +1,155 @@
-import { useState } from'react';
-import './Paginaeditarperfil.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from'react-router-dom';
-
+import { faEye, faEyeSlash, faCamera } from '@fortawesome/free-solid-svg-icons';
+import './Paginaeditarperfil.css';
+import { useNavigate } from 'react-router-dom';
 
 function Paginaeditarperfil() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [confirmaSenhaVisivel, setConfirmaSenhaVisivel] = useState(false);
+  const [userData, setUserData] = useState({
+    nome: 'João Silva',
+    email: 'joao@exemplo.com',
+    telefone: '11999998888',
+    foto: 'https://via.placeholder.com/150'
+  });
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
-  const [nome, setNome] = useState(''); // Estado para o nome
-  const [email, setEmail] = useState(''); // Estado para o email
-  const [telefone, setTelefone] = useState(''); // Estado para o telefone
   const navigate = useNavigate();
 
-  const mostrarSenha = () => {
-    setSenhaVisivel(!senhaVisivel);
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUserData({ ...userData, foto: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const mostrarConfirmaSenha = () => {
-    setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
-  };
-
-  const validarFormulario = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (senha!== confirmaSenha) {
-      alert('As senhas não correspondem. Por favor, digite novamente.');
-      return false;
+    if (senha !== confirmaSenha) {
+      alert('As senhas não coincidem!');
+      return;
     }
-    if (!nome ||!email ||!telefone) { // Verifica se os campos obrigatórios estão preenchidos
-      alert('Por favor, preencha todos os campos obrigatórios.');
-      return false;
-    }
-    excluirConta(); // Chama a função para excluir a conta
+    // Lógica para atualizar perfil
+    alert('Perfil atualizado com sucesso!');
+    navigate('/perfil');
   };
 
-  const excluirConta = () => {
-    alert('Sua conta será excluída. Você será redirecionado para a tela inicial.');
-    navigate('/'); // Redireciona para a tela App
+  const formatarTelefone = (value) => {
+    const numbers = value.replace(/\D/g, '');
+    let formatted = numbers;
+    if (numbers.length > 2) {
+      formatted = `(${numbers.substring(0,2)}) ${numbers.substring(2,7)}`;
+      if (numbers.length > 7) {
+        formatted += `-${numbers.substring(7,11)}`;
+      }
+    }
+    return formatted;
   };
 
   return (
-    
-    <div className="container content">
-      <div className="left-content">
-        <div className="FinnTech">
-        <button 
-  className="voltar-botao" 
-  onClick={() => window.history.back()}
->
-  ← Voltar
-</button>
+    <div className="profile-edit-container">
+      <div className="profile-header">
+        <h1>Editar Perfil</h1>
+        <div className="profile-photo-section">
+          <div className="photo-container">
+            <img src={userData.foto} alt="Perfil" className="profile-photo" />
+            <label className="camera-icon">
+              <FontAwesomeIcon icon={faCamera} />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                style={{ display: 'none' }}
+              />
+            </label>
+          </div>
         </div>
-        <h1>Você está usando os serviços finntech!</h1>
-        <h5>Sente-se e aproveite este momento de tranquilidade</h5>
       </div>
-      <div className="right-content">
-        <form onSubmit={validarFormulario}>
-    
-          <div className="crie-conta">
-            <p>Configure sua conta.</p>
+
+      <form onSubmit={handleSubmit} className="profile-form">
+        <div className="form-grid">
+          <div className="form-group">
+            <label>Nome Completo</label>
+            <input
+              type="text"
+              value={userData.nome}
+              onChange={(e) => setUserData({ ...userData, nome: e.target.value })}
+              required
+            />
           </div>
-          <div className="container">
-            <div className="mb-3">
-              <label htmlFor="nome">Nome completo:</label>
-              <input
-                type="text"
-                id="nome"
-                placeholder="Digite seu nome aqui."
-                className="form-control"
-                pattern="[A-Za-zÀ-ú\s]+"
-                title="Por favor, digite apenas letras"
-                value={nome} // Atualiza o valor do estado
-                onChange={(e) => setNome(e.target.value)} // Atualiza o estado
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="email@dominio.com"
-                className="form-control"
-                value={email} // Atualiza o valor do estado
-                onChange={(e) => setEmail(e.target.value)} // Atualiza o estado
-                required
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="telefone">Telefone:</label>
-              <input
-                type="text"
-                id="telefone"
-                placeholder="(11) 99999-9999"
-                className="form-control"
-                value={telefone} // Atualiza o valor do estado
-                onChange={(e) => setTelefone(e.target.value)} // Atualiza o estado
-                pattern="[0-9]{11}"
-                title="Por favor, digite exatamente 11 números"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="senha">Senha:</label>
-              <div className="input-group">
-                <input
-                  type={senhaVisivel? "text" : "password"}
-                  id="senha"
-                  placeholder="Digite sua senha."
-                  className="form-control"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
-                <FontAwesomeIcon
-                  icon={senhaVisivel? faEyeSlash : faEye}
-                  className="senha-icon"
-                  onClick={mostrarSenha}
-                />
-              </div>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="confirme-sua-senha">Confirme sua senha:</label>
-              <div className="input-group">
-                <input
-                  type={confirmaSenhaVisivel? "text" : "password"}
-                  id="confirme-sua-senha"
-                  placeholder="Confirme sua senha."
-                  className="form-control"
-                  value={confirmaSenha}
-                  onChange={(e) => setConfirmaSenha(e.target.value)}
-                  required
-                />
-                <FontAwesomeIcon
-                  icon={confirmaSenhaVisivel? faEyeSlash : faEye}
-                  className="confirma-senha-icon"
-                  onClick={mostrarConfirmaSenha}
-                />
-              </div>
-            </div>
-            <button type="submit" id="btn-cadastrar">
-              Excluir conta
-            </button>
+
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={userData.email}
+              onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+              required
+            />
           </div>
-        </form>
-      </div>
+
+          <div className="form-group">
+            <label>Telefone</label>
+            <input
+              type="text"
+              value={formatarTelefone(userData.telefone)}
+              onChange={(e) => setUserData({
+                ...userData,
+                telefone: e.target.value.replace(/\D/g, '')
+              })}
+              maxLength={15}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Nova Senha</label>
+            <div className="password-input">
+              <input
+                type={senhaVisivel ? 'text' : 'password'}
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                placeholder="••••••••"
+              />
+              <FontAwesomeIcon
+                icon={senhaVisivel ? faEyeSlash : faEye}
+                onClick={() => setSenhaVisivel(!senhaVisivel)}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Confirmar Senha</label>
+            <div className="password-input">
+              <input
+                type={confirmaSenhaVisivel ? 'text' : 'password'}
+                value={confirmaSenha}
+                onChange={(e) => setConfirmaSenha(e.target.value)}
+                placeholder="••••••••"
+              />
+              <FontAwesomeIcon
+                icon={confirmaSenhaVisivel ? faEyeSlash : faEye}
+                onClick={() => setConfirmaSenhaVisivel(!confirmaSenhaVisivel)}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="form-actions">
+          <button type="button" className="cancel-btn" onClick={() => navigate('/perfil')}>
+            Cancelar
+          </button>
+          <button type="submit" className="save-btn">
+            Salvar Alterações
+          </button>
+        </div>
+      </form>
     </div>
   );
-  
 }
 
 export default Paginaeditarperfil;

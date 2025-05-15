@@ -10,8 +10,7 @@ const Funcionarios = () => {
     descricao: '',
     peso: '',
     unidade: 'g',
-    preco: '',
-    quantidade: ''
+    preco: ''
   });
   const [erro, setErro] = useState('');
 
@@ -25,11 +24,11 @@ const Funcionarios = () => {
   };
 
   const validarCampos = () => {
-    if (!novoProduto.nome || !novoProduto.peso || !novoProduto.preco || !novoProduto.quantidade) {
+    if (!novoProduto.nome || !novoProduto.peso || !novoProduto.preco) {
       setErro('Preencha todos os campos obrigatórios!');
       return false;
     }
-    if (isNaN(novoProduto.peso) || isNaN(novoProduto.preco) || isNaN(novoProduto.quantidade)) {
+    if (isNaN(novoProduto.peso) || isNaN(novoProduto.preco)) {
       setErro('Valores numéricos inválidos!');
       return false;
     }
@@ -46,8 +45,7 @@ const Funcionarios = () => {
         descricao: '',
         peso: '',
         unidade: 'g',
-        preco: '',
-        quantidade: ''
+        preco: ''
       });
     }
   };
@@ -120,18 +118,6 @@ const Funcionarios = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label>Quantidade*:</label>
-          <input
-            type="number"
-            name="quantidade"
-            value={novoProduto.quantidade}
-            onChange={handleInputChange}
-            min="0"
-            placeholder="Quantidade em estoque"
-          />
-        </div>
-
         {erro && <div className="mensagem-erro">{erro}</div>}
 
         <button type="submit" className="botao-adicionar">
@@ -148,7 +134,6 @@ const Funcionarios = () => {
               <th>Descrição</th>
               <th>Peso/Volume</th>
               <th>Preço</th>
-              <th>Quantidade</th>
             </tr>
           </thead>
           <tbody>
@@ -158,7 +143,6 @@ const Funcionarios = () => {
                 <td>{produto.descricao}</td>
                 <td>{produto.peso} {produto.unidade}</td>
                 <td>R$ {Number(produto.preco).toFixed(2)}</td>
-                <td>{produto.quantidade}</td>
               </tr>
             ))}
           </tbody>
