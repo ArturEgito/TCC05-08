@@ -213,8 +213,118 @@
 }
 
 
+/* Novos estilos para cadastro */
+.food-select {
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1rem;
+  appearance: none;
+  background: white;
+  cursor: pointer;
+}
 
+.food-select:focus {
+  border-color: var(--food-red);
+  box-shadow: 0 0 10px rgba(234,29,44,0.1);
+  outline: none;
+}
 
+.food-access-btn {
+  background: transparent;
+  border: 2px solid var(--food-red);
+  color: var(--food-red);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.food-access-btn:hover {
+  background: rgba(234,29,44,0.05);
+  transform: translateY(-2px);
+}
+
+.food-social {
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.food-check {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .food-select {
+    padding: 12px 40px 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .food-access-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+/* Ajustes para o design unificado */
+.food-access-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.food-access-btn {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid var(--food-red);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--food-red);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.food-access-btn.active {
+  background: var(--food-red);
+  color: white;
+}
+
+.food-access-btn:hover {
+  background: rgba(234,29,44,0.05);
+}
+
+.food-address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.food-address-grid input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.food-address-grid input:read-only {
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .food-address-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .food-access-buttons {
+    flex-direction: column;
+  }
+}
 
   .left-content {
     display: none;

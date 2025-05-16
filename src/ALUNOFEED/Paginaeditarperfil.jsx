@@ -34,9 +34,16 @@ function Paginaeditarperfil() {
       alert('As senhas não coincidem!');
       return;
     }
-    // Lógica para atualizar perfil
     alert('Perfil atualizado com sucesso!');
-    navigate('/perfil');
+    navigate('/telainicial');
+  };
+
+  const handleDeleteAccount = () => {
+    if (window.confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.')) {
+      // Adicione aqui a lógica de exclusão da conta
+      console.log('Conta excluída com sucesso');
+      navigate('/');
+    }
   };
 
   const formatarTelefone = (value) => {
@@ -54,6 +61,9 @@ function Paginaeditarperfil() {
   return (
     <div className="profile-edit-container">
       <div className="profile-header">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          Voltar
+        </button>
         <h1>Editar Perfil</h1>
         <div className="profile-photo-section">
           <div className="photo-container">
@@ -94,19 +104,6 @@ function Paginaeditarperfil() {
           </div>
 
           <div className="form-group">
-            <label>Telefone</label>
-            <input
-              type="text"
-              value={formatarTelefone(userData.telefone)}
-              onChange={(e) => setUserData({
-                ...userData,
-                telefone: e.target.value.replace(/\D/g, '')
-              })}
-              maxLength={15}
-            />
-          </div>
-
-          <div className="form-group">
             <label>Nova Senha</label>
             <div className="password-input">
               <input
@@ -140,12 +137,19 @@ function Paginaeditarperfil() {
         </div>
 
         <div className="form-actions">
-          <button type="button" className="cancel-btn" onClick={() => navigate('/perfil')}>
-            Cancelar
-          </button>
-          <button type="submit" className="save-btn">
-            Salvar Alterações
-          </button>
+          <div className="left-actions">
+            <button type="button" className="delete-btn" onClick={handleDeleteAccount}>
+              Excluir Conta
+            </button>
+          </div>
+          <div className="right-actions">
+            <button type="button" className="cancel-btn" onClick={() => navigate('/perfil')}>
+              Cancelar
+            </button>
+            <button type="submit" className="save-btn">
+              Salvar Alterações
+            </button>
+          </div>
         </div>
       </form>
     </div>

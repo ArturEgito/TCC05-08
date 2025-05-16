@@ -56,3 +56,49 @@
 .tabela-historico td:nth-child(5) {
     text-align: right;
 }
+.botoes-acao {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 10px;
+}
+
+.botao-voltar {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-voltar:hover {
+    background-color: #5a6268;
+}
+
+.botao-excluir-tudo {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-excluir-tudo:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+    .botoes-acao {
+        flex-direction: column;
+    }
+    
+    .botao-voltar,
+    .botao-excluir-tudo {
+        width: 100%;
+    }
+}

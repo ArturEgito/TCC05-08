@@ -24,76 +24,77 @@ function Entraraluno() {
   const voltarParaApp = () => navigate('/');
 
   return (
-    <div className="bk-auth-container">
-      <div className="bk-flame-background"></div>
+    <div className="food-app-container">
+      <div className="food-background">
+        <div className="food-bubbles"></div>
+        <div className="food-stripes"></div>
+      </div>
       
-      <div className="bk-glass-container">
-        <div className="bk-left-content">
-          <div className="bk-flame-logo">
-            <div className="flame"></div>
-            <div className="flame"></div>
-            <div className="flame"></div>
-            <h1>FinnTech</h1>
+      <div className="food-main-card">
+        <div className="food-brand-header">
+          <div className="food-logo">
+            <span className="food-icon">🍔</span>
+            <h1>FinnFood</h1>
           </div>
-          <h2>Sua Cantina Online</h2>
-          <button className="bk-btn-voltar" onClick={voltarParaApp}>
-            Voltar
-          </button>
+          <p>Sua Cantina Delivery</p>
         </div>
 
-        <div className="bk-right-content">
-          <form onSubmit={validarFormulario} className="bk-login-form">
-            <div className="bk-form-header">
-              <h3>Fazer login na sua Conta</h3>
-              <div className="flame-divider"></div>
-            </div>
+        <form onSubmit={validarFormulario} className="food-login-form">
+          <h2>Login do Aluno</h2>
+          
+          <div className="food-input-group">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <span className="input-icon">✉️</span>
+          </div>
 
-            <div className="bk-input-group">
-              <input
-                type="email"
-                placeholder="emaildigue@FLAME.COM"
-                className="bk-input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <div className="input-flame"></div>
-            </div>
-
-            <div className="bk-input-group">
-              <input
-                type={senhaVisivel ? "text" : "password"}
-                placeholder="CARDIGUE"
-                className="bk-input"
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
-                required
-              />
+          <div className="food-input-group">
+            <input
+              type={senhaVisivel ? "text" : "password"}
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
+            <span className="input-icon">
               <FontAwesomeIcon
                 icon={senhaVisivel ? faEyeSlash : faEye}
-                className="bk-eye-icon"
                 onClick={mostrarSenha}
               />
-              <div className="input-flame"></div>
-            </div>
+            </span>
+          </div>
 
-            <div className="bk-terms">
-              <label className="bk-checkbox">
-                <input type="checkbox" required />
-                <span className="bk-checkmark"></span>
-                Aceitar os <a href="#terms"> Termos</a>
-              </label>
-            </div>
+          <div className="food-options">
+            <label className="food-check">
+              <input type="checkbox" required />
+              <span className="checkmark"></span>
+              Li e aceito os termos de uso
+            </label>
+            <a href="#forgot" className="food-link">Esqueceu a senha?</a>
+          </div>
 
-            <button type="submit" className="bk-login-btn">
-              IGNITE LOGIN
-              <div className="btn-flames">
-                <div className="mini-flame"></div>
-                <div className="mini-flame"></div>
-                <div className="mini-flame"></div>
-              </div>
-            </button>
-          </form>
+          <button type="submit" className="food-btn-primary">
+            Entrar
+            <span className="btn-icon">🚀</span>
+          </button>
+
+          <button className="food-btn-ghost" onClick={voltarParaApp}>
+            Voltar para o início
+          </button>
+        </form>
+
+        <div className="food-footer">
+          <p>Não tem conta? <a href="#signup">Cadastre-se</a></p>
+          <div className="food-social">
+            <span>📱</span>
+            <span>📧</span>
+            <span>🔒</span>
+          </div>
         </div>
       </div>
     </div>

@@ -56,22 +56,27 @@ const Carrinho = () => {
     setPagamento(e.target.value);
   };
 
+
   const handlePagar = () => {
     if (!pagamento || items.length === 0) return;
-
+  
     const novoPedido = {
-      numero: Date.now(), // id único
+      numero: Date.now(),
       precoTotal: total,
-      produtos: items.map((item) => `${item.nome} x${item.quantidade}`),
+      produtos: items.map((item) => ({
+        nome: item.nome,
+        quantidade: item.quantidade,
+        preco: item.preco
+      })),
       dataPedido: new Date().toISOString().split('T')[0],
-      nomeCliente: 'João Silva', // fixo ou dinâmico se tiver login
+      nomeCliente: 'João Silva',
       formaPagamento: pagamento
     };
-
+  
     const pedidosAnteriores = JSON.parse(localStorage.getItem('pedidos')) || [];
     pedidosAnteriores.push(novoPedido);
     localStorage.setItem('pedidos', JSON.stringify(pedidosAnteriores));
-
+  
     navigate('/pedidos');
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Funcionarios.css';
 
@@ -14,9 +14,18 @@ const Funcionarios = () => {
   });
   const [erro, setErro] = useState('');
 
-  const handleVoltar = () => {
-    navigate(-1);
-  };
+  // Carrega produtos do localStorage ao iniciar
+  useEffect(() => {
+    const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
+    setProdutos(produtosSalvos);
+  }, []);
+
+  // Atualiza localStorage quando produtos mudam
+  useEffect(() => {
+    localStorage.setItem('produtos', JSON.stringify(produtos));
+  }, [produtos]);
+
+  const handleVoltar = () => navigate(-1);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +48,13 @@ const Funcionarios = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validarCampos()) {
-      setProdutos([...produtos, { ...novoProduto, id: Date.now() }]);
+      const novoItem = {
+        ...novoProduto,
+        id: Date.now(),
+        [novoProduto.unidade === 'g' ? 'peso' : 'volume']: `${novoProduto.peso}${novoProduto.unidade}`
+      };
+      
+      setProdutos([...produtos, novoItem]);
       setNovoProduto({
         nome: '',
         descricao: '',
@@ -52,15 +67,9 @@ const Funcionarios = () => {
 
   return (
     <div className="produtos-container">
-      <button 
-        className="voltar-botao" 
-        onClick={handleVoltar}
-      >
-        ← Voltar
-      </button>
-
+      <button className="voltar-botao" onClick={handleVoltar}>← Voltar</button>
       <h2>Cadastro de Produtos</h2>
-      
+
       <form onSubmit={handleSubmit} className="form-produto">
         <div className="form-group">
           <label>Nome*:</label>

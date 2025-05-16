@@ -5,17 +5,37 @@
   background: #ffffff;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .profile-header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .profile-header h1 {
   color: #2d3748;
   font-size: 2rem;
   margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #cbd5e0;
 }
 
 .profile-photo-section {
@@ -111,12 +131,12 @@
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
-.save-btn, .cancel-btn {
+.save-btn, .cancel-btn, .delete-btn {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -143,6 +163,16 @@
   background: #f7fafc;
 }
 
+.delete-btn {
+  background: #e53e3e;
+  color: white;
+  border: none;
+}
+
+.delete-btn:hover {
+  background: #c53030;
+}
+
 @media (max-width: 768px) {
   .profile-edit-container {
     margin: 1rem;
@@ -157,7 +187,7 @@
     flex-direction: column;
   }
 
-  .save-btn, .cancel-btn {
+  .save-btn, .cancel-btn, .delete-btn {
     width: 100%;
   }
 }
