@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiClock, FiShoppingCart, FiUser, FiSmartphone } from 'react-icons/fi';
-import './telainicio.css';
+import {
+  FiClock,
+  FiShoppingCart,
+  FiUser,
+  FiSmartphone
+} from 'react-icons/fi';
+import './Telainicio.css';
 
 const Telainicio = () => {
   return (
-    <div className="home-container">
+    <div className="main-container">
+      {/* Header */}
       <header className="home-header">
         <h1 className="home-logo">FinnTech</h1>
         <nav className="home-nav">
@@ -17,59 +23,51 @@ const Telainicio = () => {
         </nav>
       </header>
 
+      {/* Conteúdo principal */}
       <main className="main-content">
-        <div className="hero-section">
-          <h1 className="hero-title">
-            Bem-vindo ao gerenciamento Inteligente
-          </h1>
+        <section className="hero-section">
+          <h1 className="hero-title">Bem-vindo ao gerenciamento Inteligente</h1>
           <p className="hero-description">
             Impulsione suas vendas com nosso sistema inteligente de agendamento e pedidos online.
           </p>
-          <Link to="/menu" className="cta-button">
-            Ver Menu
-          </Link>
-        </div>
+          <Link to="/menu" className="cta-button">Ver Menu</Link>
+        </section>
 
-        <div className="features-grid">
-          <div className="feature-card">
-            <FiClock className="feature-icon" />
-            <h3>Organizar</h3>
-            <p>Organize o tempo da sua cantina na escola</p>
-          </div>
-          
-          <div className="feature-card">
-            <FiShoppingCart className="feature-icon" />
-            <h3>Vendas</h3>
-            <p>Gerencie suas vendas</p>
-          </div>
-          
-          <div className="feature-card">
-            <FiUser className="feature-icon" />
-            <h3>Produtos</h3>
-            <p>Cadastre seus produtos</p>
-          </div>
-          
-          <div className="feature-card">
-            <FiSmartphone className="feature-icon" />
-            <h3>Acesso Mobile</h3>
-            <p>Gerencie tudo diretamente do seu celular</p>
-          </div>
-        </div>
+        {/* Seção de recursos */}
+        <section className="features-grid">
+          <FeatureCard
+            icon={<FiClock className="feature-icon" />}
+            title="Organizar"
+            description="Organize o tempo da sua cantina na escola"
+          />
+          <FeatureCard
+            icon={<FiShoppingCart className="feature-icon" />}
+            title="Vendas"
+            description="Gerencie suas vendas"
+          />
+          <FeatureCard
+            icon={<FiUser className="feature-icon" />}
+            title="Produtos"
+            description="Cadastre seus produtos"
+          />
+          <FeatureCard
+            icon={<FiSmartphone className="feature-icon" />}
+            title="Acesso Mobile"
+            description="Gerencie tudo diretamente do seu celular"
+          />
+        </section>
       </main>
-
-      <footer className="home-footer">
-        <div className="footer-content">
-          <div className="social-links">
-            <a href="/" className="social-link"><FiSmartphone /></a>
-            <a href="/" className="social-link"><FiClock /></a>
-            <a href="/" className="social-link"><FiShoppingCart /></a>
-          </div>
-          <p>&copy; 2024 FinnTech. Todos os direitos reservados.</p>
-          <p>Sistema de Gestão de Cantina Escolar</p>
-        </div>
-      </footer>
     </div>
   );
 };
+
+// Componente reutilizável para os cards
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="feature-card">
+    {icon}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+);
 
 export default Telainicio;
