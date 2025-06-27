@@ -132,22 +132,22 @@ const features = [
   {
     icon: <FiClock size={32} />,
     title: 'Agendamento Inteligente',
-    description: 'Escolha o horário ideal para retirada sem filas'
+    description: 'Escolha ideal para retirada sem filas'
   },
   {
     icon: <FiShoppingCart size={32} />,
     title: 'Checkout Rápido',
-    description: 'Pagamento seguro em menos de 30 segundos'
+    description: 'Pagamento seguro'
   },
   {
     icon: <FiUser size={32} />,
     title: 'Perfil Personalizado',
-    description: 'Salve suas preferências e pagamentos'
+    description: 'Diversas formas de pagamento'
   },
   {
     icon: <FiSmartphone size={32} />,
     title: 'App Mobile',
-    description: 'Disponível para iOS e Android'
+    description: 'Disponível para  Android'
   }
 ];
 

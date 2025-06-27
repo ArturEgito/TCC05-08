@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Funcionarios.css';
 
+const categorias = [
+  'Sorvete',
+  'Bebida',
+  'Salgadinhos',
+  'Bolachas',
+  'Doces',
+  'Promoção'
+];
+
 const Funcionarios = () => {
   const navigate = useNavigate();
   const [produtos, setProdutos] = useState([]);
@@ -10,17 +19,17 @@ const Funcionarios = () => {
     descricao: '',
     peso: '',
     unidade: 'g',
-    preco: ''
+    preco: '',
+    categoria: '',
+    imagem: ''
   });
   const [erro, setErro] = useState('');
 
-  // Carrega produtos do localStorage ao iniciar
   useEffect(() => {
     const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
     setProdutos(produtosSalvos);
   }, []);
 
-  // Atualiza localStorage quando produtos mudam
   useEffect(() => {
     localStorage.setItem('produtos', JSON.stringify(produtos));
   }, [produtos]);
@@ -32,9 +41,20 @@ const Funcionarios = () => {
     setNovoProduto({ ...novoProduto, [name]: value });
   };
 
+  // Função para carregar a imagem como base64
+  const handleImagemChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNovoProduto(prev => ({ ...prev, imagem: reader.result }));
+    };
+    reader.readAsDataURL(file);
+  };
+
   const validarCampos = () => {
-    if (!novoProduto.nome || !novoProduto.peso || !novoProduto.preco) {
-      setErro('Preencha todos os campos obrigatórios!');
+    if (!novoProduto.nome || !novoProduto.peso || !novoProduto.preco || !novoProduto.categoria) {
+      setErro('Preencha todos os campos obrigatórios, incluindo categoria!');
       return false;
     }
     if (isNaN(novoProduto.peso) || isNaN(novoProduto.preco)) {
@@ -51,16 +71,17 @@ const Funcionarios = () => {
       const novoItem = {
         ...novoProduto,
         id: Date.now(),
-        [novoProduto.unidade === 'g' ? 'peso' : 'volume']: `${novoProduto.peso}${novoProduto.unidade}`
+        pesoOuVolume: `${novoProduto.peso}${novoProduto.unidade}`
       };
-      
       setProdutos([...produtos, novoItem]);
       setNovoProduto({
         nome: '',
         descricao: '',
         peso: '',
         unidade: 'g',
-        preco: ''
+        preco: '',
+        categoria: '',
+        imagem: ''
       });
     }
   };
@@ -70,7 +91,7 @@ const Funcionarios = () => {
       <button className="voltar-botao" onClick={handleVoltar}>← Voltar</button>
       <h2>Cadastro de Produtos</h2>
 
-      <form onSubmit={handleSubmit} className="form-produto">
+      <form onSubmit={handleSubmit} className="form-produto" encType="multipart/form-data">
         <div className="form-group">
           <label>Nome*:</label>
           <input
@@ -127,6 +148,36 @@ const Funcionarios = () => {
           />
         </div>
 
+        <div className="form-group">
+          <label>Categoria*:</label>
+          <select
+            name="categoria"
+            value={novoProduto.categoria}
+            onChange={handleInputChange}
+          >
+            <option value="">-- Selecione a categoria --</option>
+            {categorias.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>Imagem do Produto:</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImagemChange}
+          />
+          {novoProduto.imagem && (
+            <img
+              src={novoProduto.imagem}
+              alt="Preview do produto"
+              style={{ marginTop: '10px', maxWidth: '150px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}
+            />
+          )}
+        </div>
+
         {erro && <div className="mensagem-erro">{erro}</div>}
 
         <button type="submit" className="botao-adicionar">
@@ -139,8 +190,10 @@ const Funcionarios = () => {
         <table>
           <thead>
             <tr>
+              <th>Imagem</th>
               <th>Nome</th>
               <th>Descrição</th>
+              <th>Categoria</th>
               <th>Peso/Volume</th>
               <th>Preço</th>
             </tr>
@@ -148,9 +201,21 @@ const Funcionarios = () => {
           <tbody>
             {produtos.map((produto) => (
               <tr key={produto.id}>
+                <td>
+                  {produto.imagem ? (
+                    <img
+                      src={produto.imagem}
+                      alt={produto.nome}
+                      style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px' }}
+                    />
+                  ) : (
+                    '—'
+                  )}
+                </td>
                 <td>{produto.nome}</td>
-                <td>{produto.descricao}</td>
-                <td>{produto.peso} {produto.unidade}</td>
+                <td>{produto.descricao || '—'}</td>
+                <td>{produto.categoria}</td>
+                <td>{produto.peso}{produto.unidade}</td>
                 <td>R$ {Number(produto.preco).toFixed(2)}</td>
               </tr>
             ))}

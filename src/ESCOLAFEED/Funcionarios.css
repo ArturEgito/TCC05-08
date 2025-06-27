@@ -237,4 +237,23 @@ tr:hover td {
   .tabela-produtos h3 {
     font-size: 1.3rem;
   }
+
+  /* Ajuste para a imagem de preview no formulário */
+.form-group img {
+  display: block;
+  margin-top: 8px;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Imagem pequena na tabela */
+.tabela-produtos img {
+  border-radius: 6px;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+}
+
 }

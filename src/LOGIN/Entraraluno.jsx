@@ -40,7 +40,7 @@ function Entraraluno() {
         </div>
 
         <form onSubmit={validarFormulario} className="food-login-form">
-          <h2>Login do Aluno</h2>
+          <h2>Login</h2>
           
           <div className="food-input-group">
             <input
@@ -75,7 +75,7 @@ function Entraraluno() {
               <span className="checkmark"></span>
               Li e aceito os termos de uso
             </label>
-            <a href="#forgot" className="food-link">Esqueceu a senha?</a>
+            <a href="/esqueceu" className="food-link">Esqueceu a senha?</a>
           </div>
 
           <button type="submit" className="food-btn-primary">

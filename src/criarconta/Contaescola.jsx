@@ -12,6 +12,7 @@ function Contaescola() {
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
   const [cep, setCep] = useState('');
+  const [cnpj, setCnpj] = useState('');
   const [nomeInstituicao, setNomeInstituicao] = useState('');
   const [emailInstitucional, setEmailInstitucional] = useState('');
   const [endereco, setEndereco] = useState({
@@ -54,6 +55,7 @@ function Contaescola() {
 
     const novaEscola = {
       nome: nomeInstituicao,
+      cnpj,
       email: emailInstitucional,
       cep,
       endereco: {
@@ -114,6 +116,24 @@ function Contaescola() {
               required
             />
             <span className="input-icon">🏛️</span>
+          </div>
+
+          <div className="food-input-group">
+            <InputMask
+              mask="99.999.999/9999-99"
+              value={cnpj}
+              onChange={(e) => setCnpj(e.target.value)}
+            >
+              {(inputProps) => (
+                <input
+                  {...inputProps}
+                  type="text"
+                  placeholder="CNPJ da Instituição"
+                  required
+                />
+              )}
+            </InputMask>
+            <span className="input-icon">🧾</span>
           </div>
 
           <div className="food-input-group">

@@ -14,7 +14,7 @@ body {
 }
 
 .menu-container {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 100px 20px 40px;
   position: relative;
@@ -22,7 +22,7 @@ body {
 
 .menu-titulo {
   text-align: center;
-  margin: 4rem 0;
+  margin: 4rem 0 2rem;
   position: relative;
 }
 
@@ -49,11 +49,46 @@ body {
   border-radius: 2px;
 }
 
+/* Botões de filtro de categorias */
+.filtro-categorias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 3rem;
+  padding: 0 10px;
+}
+
+.btn-categoria {
+  background: white;
+  border: 2px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  padding: 0.5rem 1.4rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(255, 71, 87, 0.3);
+}
+
+.btn-categoria:hover {
+  background: var(--cor-primaria);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.6);
+}
+
+.btn-categoria.ativo {
+  background: var(--cor-primaria);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.7);
+}
+
+/* Grid dos produtos com quadrados menores */
 .menu-itens {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+  padding: 0 10px;
 }
 
 .menu-item {
@@ -64,6 +99,7 @@ body {
   box-shadow: var(--sombra);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .menu-item:hover {
@@ -72,8 +108,9 @@ body {
 
 .imagem-container {
   position: relative;
-  height: 250px;
+  height: 180px;
   overflow: hidden;
+  border-bottom: 1px solid #eee;
 }
 
 .menu-imagem {
@@ -93,42 +130,60 @@ body {
 }
 
 .conteudo-item {
-  padding: 1.5rem;
+  padding: 1rem 1.2rem 1.5rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+/* Badge da categoria */
+.categoria-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--cor-secundaria);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(46, 213, 115, 0.6);
 }
 
 .menu-nome {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #2d3436;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .detalhes-produto {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.85rem;
   color: #636e72;
 }
 
 .menu-descricao {
   color: #636e72;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
   flex-grow: 1;
+  font-size: 0.9rem;
 }
 
 .preco-container {
   margin-top: auto;
-  padding: 1rem 0;
-  border-top: 2px dashed #dfe6e9;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eee;
 }
 
 .menu-preco {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--cor-primaria);
   text-align: center;
@@ -139,12 +194,13 @@ body {
   background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
   color: white;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.8rem;
   border-radius: 15px;
   font-weight: 600;
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.3s ease;
+  margin-top: 0.5rem;
 }
 
 .efeito-botao {
@@ -193,6 +249,13 @@ body {
   transform: translateX(-3px);
 }
 
+.nenhum-produto {
+  text-align: center;
+  color: #999;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
 @media (max-width: 768px) {
   .menu-container {
     padding: 80px 15px 20px;
@@ -203,13 +266,13 @@ body {
   }
   
   .menu-itens {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    padding: 0 10px;
   }
   
   .imagem-container {
-    height: 200px;
+    height: 160px;
   }
 }
 
@@ -221,6 +284,6 @@ body {
   }
   
   .menu-preco {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }

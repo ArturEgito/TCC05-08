@@ -98,9 +98,9 @@ function Paginaeditarperfil() {
             <input
               type="email"
               value={userData.email}
-              onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-              required
+              disabled
             />
+
           </div>
 
           <div className="form-group">
