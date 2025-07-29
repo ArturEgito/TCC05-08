@@ -1,34 +1,37 @@
-import { useState } from 'react';
-import './Entraraluno.css';
+import { useState } from "react";
+import './Contaescola.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import UsuarioService from '../services/services/UsuarioService';
 
-function Entraraluno() {
+function CadastroAluno() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const [confirmaSenhaVisivel, setConfirmaSenhaVisivel] = useState(false);
   const [senha, setSenha] = useState('');
+  const [confirmaSenha, setConfirmaSenha] = useState('');
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const mostrarSenha = () => setSenhaVisivel(!senhaVisivel);
+  const mostrarConfirmaSenha = () => setConfirmaSenhaVisivel(!confirmaSenhaVisivel);
 
   const validarFormulario = async (e) => {
     e.preventDefault();
-    if (!email || !senha) {
-      alert('Por favor, preencha ambos os campos!');
+    if (senha !== confirmaSenha) {
+      alert('As senhas não correspondem. Por favor, digite novamente.');
       return;
     }
-    
+
     try {
-      await UsuarioService.signin(email, senha);
-      navigate('/telainicial');
+      await UsuarioService.signup(nome, email, senha);
+      alert('Usuário cadastrado com sucesso!');
+      navigate('/entraraluno');
     } catch (error) {
-      alert('Erro ao fazer login: ' + (error.response?.data?.message || 'Email ou senha inválidos'));
+      alert('Erro ao cadastrar usuário: ' + (error.response?.data?.message || error.message));
     }
   };
-
-  const voltarParaApp = () => navigate('/');
 
   return (
     <div className="food-app-container">
@@ -47,8 +50,35 @@ function Entraraluno() {
         </div>
 
         <form onSubmit={validarFormulario} className="food-login-form">
-          <h2>Login</h2>
-          
+          <div className="food-access-buttons">
+            <button
+              type="button"
+              className="food-access-btn active"
+            >
+              Cadastro Aluno
+            </button>
+            <button
+              type="button"
+              className="food-access-btn"
+              onClick={() => navigate('/contaescola')}
+            >
+              Cadastro Escola
+            </button>
+          </div>
+
+          <h2>Criar Conta</h2>
+
+          <div className="food-input-group">
+            <input
+              type="text"
+              placeholder="Nome Completo"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
+            <span className="input-icon">👤</span>
+          </div>
+
           <div className="food-input-group">
             <input
               type="email"
@@ -76,36 +106,42 @@ function Entraraluno() {
             </span>
           </div>
 
+          <div className="food-input-group">
+            <input
+              type={confirmaSenhaVisivel ? "text" : "password"}
+              placeholder="Confirme sua Senha"
+              value={confirmaSenha}
+              onChange={(e) => setConfirmaSenha(e.target.value)}
+              required
+            />
+            <span className="input-icon">
+              <FontAwesomeIcon
+                icon={confirmaSenhaVisivel ? faEyeSlash : faEye}
+                onClick={mostrarConfirmaSenha}
+              />
+            </span>
+          </div>
+
           <div className="food-options">
             <label className="food-check">
               <input type="checkbox" required />
               <span className="checkmark"></span>
-              Li e aceito os termos de uso
+              Aceito os Termos de Serviço
             </label>
-            <a href="/esqueceu" className="food-link">Esqueceu a senha?</a>
           </div>
 
           <button type="submit" className="food-btn-primary">
-            Entrar
+            Criar Conta
             <span className="btn-icon">🚀</span>
           </button>
 
-          <button className="food-btn-ghost" onClick={voltarParaApp}>
-            Voltar para o início
-          </button>
-        </form>
-
-        <div className="food-footer">
-          <p>Não tem conta? <a href="#signup">Cadastre-se</a></p>
-          <div className="food-social">
-            <span>📱</span>
-            <span>📧</span>
-            <span>🔒</span>
+          <div className="food-footer">
+            <p>Já possui conta? <Link to="/entraraluno" className="food-link">Entrar</Link></p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
 }
 
-export default Entraraluno;
+export default CadastroAluno;

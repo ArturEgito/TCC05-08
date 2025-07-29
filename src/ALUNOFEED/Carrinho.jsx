@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './carrinho.css';
+import PedidoService from '../services/services/PedidoService';
+import CarrinhoService from '../services/services/CarrinhoService';
+import UsuarioService from '../services/services/UsuarioService';
 
 const Carrinho = () => {
   const location = useLocation();
@@ -57,28 +60,34 @@ const Carrinho = () => {
   };
 
 
-  const handlePagar = () => {
+  const handlePagar = async () => {
     if (!pagamento || items.length === 0) return;
+    
+    const usuario = UsuarioService.getCurrentUser();
+    const nomeCliente = usuario ? usuario.nome : 'Cliente';
   
     const novoPedido = {
-      numero: Date.now(),
       precoTotal: total,
       produtos: items.map((item) => ({
         nome: item.nome,
         quantidade: item.quantidade,
         preco: item.preco
       })),
-      dataPedido: new Date().toISOString(),
-      nomeCliente: 'João Silva',
+      nomeCliente,
       formaPagamento: pagamento,
       status: 'pendente'
     };
   
-    const pedidosAnteriores = JSON.parse(localStorage.getItem('pedidos')) || [];
-    pedidosAnteriores.push(novoPedido);
-    localStorage.setItem('pedidos', JSON.stringify(pedidosAnteriores));
-  
-    navigate('/pedidos');
+    try {
+      await PedidoService.create(novoPedido);
+      if (usuario) {
+        await CarrinhoService.limparCarrinho(usuario.id);
+      }
+      alert('Pedido realizado com sucesso!');
+      navigate('/pedidos');
+    } catch (error) {
+      alert('Erro ao processar pedido: ' + (error.response?.data?.message || error.message));
+    }
   };
 
   return (

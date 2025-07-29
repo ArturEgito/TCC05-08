@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Pedidos.css';
+import PedidoService from '../services/services/PedidoService';
+import UsuarioService from '../services/services/UsuarioService';
 
 const Pedidos = () => {
   const [pedidos, setPedidos] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const carregarPedidos = () => {
+    const carregarPedidos = async () => {
       try {
-        const dados = JSON.parse(localStorage.getItem('pedidos')) || [];
-        setPedidos([...dados].reverse());
+        const usuario = UsuarioService.getCurrentUser();
+        if (usuario) {
+          const response = await PedidoService.findByCliente(usuario.nome);
+          setPedidos([...response.data].reverse());
+        } else {
+          // Fallback para localStorage
+          const dados = JSON.parse(localStorage.getItem('pedidos')) || [];
+          setPedidos([...dados].reverse());
+        }
       } catch (error) {
         console.error('Erro ao carregar pedidos:', error);
+        // Fallback para localStorage em caso de erro
+        const dados = JSON.parse(localStorage.getItem('pedidos')) || [];
+        setPedidos([...dados].reverse());
       }
     };
     carregarPedidos();

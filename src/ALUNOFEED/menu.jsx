@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Menu.css';
+import ProdutoService from '../services/services/ProdutoService';
+import CarrinhoService from '../services/services/CarrinhoService';
+import UsuarioService from '../services/services/UsuarioService';
 
 const categorias = [
   'Todos',
@@ -18,24 +21,61 @@ const Menu = () => {
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('Todos');
 
   useEffect(() => {
-    const carregarProdutos = () => {
-      const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
-      setProdutos(produtosSalvos);
+    const carregarProdutos = async () => {
+      try {
+        const response = await ProdutoService.findAll();
+        setProdutos(response.data);
+      } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+        // Fallback para localStorage se API falhar
+        const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
+        setProdutos(produtosSalvos);
+      }
     };
     carregarProdutos();
   }, []);
 
-  const handleAdicionar = (produto) => {
-    const produtoFormatado = {
-      id: Date.now(),
-      nome: produto.nome,
-      preco: Number(produto.preco),
-      quantidade: 1,
-      peso: produto.peso,
-      volume: produto.volume,
-      imagem: produto.imagem,
-    };
-    navigate('/carrinho', { state: { novoItem: produtoFormatado } });
+  const handleAdicionar = async (produto) => {
+    const usuario = UsuarioService.getCurrentUser();
+    
+    if (!usuario) {
+      alert('Faça login para adicionar produtos ao carrinho');
+      navigate('/entraraluno');
+      return;
+    }
+
+    try {
+      await CarrinhoService.adicionarItem({
+        produtoId: produto.id,
+        quantidade: 1,
+        usuarioId: usuario.id
+      });
+      
+      // Fallback para navegação local
+      const produtoFormatado = {
+        id: Date.now(),
+        nome: produto.nome,
+        preco: Number(produto.preco),
+        quantidade: 1,
+        peso: produto.peso,
+        volume: produto.volume,
+        imagem: produto.imagem,
+      };
+      navigate('/carrinho', { state: { novoItem: produtoFormatado } });
+    } catch (error) {
+      console.error('Erro ao adicionar ao carrinho:', error);
+      // Fallback para funcionamento local
+      const produtoFormatado = {
+        id: Date.now(),
+        nome: produto.nome,
+        preco: Number(produto.preco),
+        quantidade: 1,
+        peso: produto.peso,
+        volume: produto.volume,
+        imagem: produto.imagem,
+      };
+      navigate('/carrinho', { state: { novoItem: produtoFormatado } });
+    }
   };
 
   const produtosFiltrados = categoriaSelecionada === 'Todos'

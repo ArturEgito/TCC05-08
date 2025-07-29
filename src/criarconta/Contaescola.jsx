@@ -5,6 +5,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
+import EscolaService from '../services/services/EscolaService';
 
 function Contaescola() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
@@ -46,7 +47,7 @@ function Contaescola() {
     }
   };
 
-  const validarFormulario = (e) => {
+  const validarFormulario = async (e) => {
     e.preventDefault();
     if (senha !== confirmaSenha) {
       alert('As senhas não correspondem. Por favor, digite novamente.');
@@ -57,19 +58,21 @@ function Contaescola() {
       nome: nomeInstituicao,
       cnpj,
       email: emailInstitucional,
+      senha,
       cep,
       endereco: {
         ...endereco,
         numero: endereco.numero
-      },
-      dataCadastro: new Date().toISOString()
+      }
     };
 
-    const escolasSalvas = JSON.parse(localStorage.getItem('escolas')) || [];
-    escolasSalvas.push(novaEscola);
-    localStorage.setItem('escolas', JSON.stringify(escolasSalvas));
-
-    navigate('/Telainicio');
+    try {
+      await EscolaService.create(novaEscola);
+      alert('Escola cadastrada com sucesso!');
+      navigate('/Telainicio');
+    } catch (error) {
+      alert('Erro ao cadastrar escola: ' + (error.response?.data?.message || error.message));
+    }
   };
 
   return (
