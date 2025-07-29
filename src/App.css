@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #6a11cb;
-  --secondary-color: #2575fc;
-  --accent-color: #ff6b6b;
-  --food-red: #ea1d2c;
-  --text-dark: #2d3436;
-  --text-light: #f8f9fa;
-  --gradient: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  --primary-color: #ff6b35;
+  --secondary-color: #4ecdc4;
+  --accent-color: #ffe66d;
+  --food-red: #ff6b35;
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 .food-app-container {
@@ -15,28 +15,84 @@
   align-items: center;
   background: var(--gradient);
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-app-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-50px, -50px) rotate(360deg); }
 }
 
 .food-main-card {
-  background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   max-width: 500px;
   width: 100%;
-  padding: 2rem;
+  padding: 2.5rem;
   z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient);
 }
 
 .food-brand-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
 .food-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.food-logo .food-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.food-logo h1 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.food-brand-header p {
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-weight: 500;
+  margin: 0;
 }
 
 .food-login-form h2 {
@@ -52,17 +108,23 @@
 .food-input-group input,
 .food-select {
   width: 100%;
-  padding: 0.9rem 1rem;
-  padding-right: 40px;
-  border: 2px solid #eee;
-  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  padding-right: 50px;
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  border-radius: 16px;
   font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .food-input-group input:focus,
 .food-select:focus {
   border-color: var(--food-red);
   outline: none;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+  transform: translateY(-2px);
 }
 
 .input-icon {
@@ -87,25 +149,46 @@
 
 .food-btn-primary {
   width: 100%;
-  padding: 1rem;
-  background: var(--food-red);
+  padding: 1.2rem;
+  background: var(--gradient);
   color: white;
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.food-btn-primary:hover::before {
+  left: 100%;
 }
 
 .food-btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+}
+
+.food-btn-primary:active {
+  transform: translateY(-1px);
 }
 
 .food-footer {

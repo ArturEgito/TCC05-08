@@ -68,9 +68,10 @@ const Carrinho = () => {
         quantidade: item.quantidade,
         preco: item.preco
       })),
-      dataPedido: new Date().toISOString().split('T')[0],
+      dataPedido: new Date().toISOString(),
       nomeCliente: 'João Silva',
-      formaPagamento: pagamento
+      formaPagamento: pagamento,
+      status: 'pendente'
     };
   
     const pedidosAnteriores = JSON.parse(localStorage.getItem('pedidos')) || [];

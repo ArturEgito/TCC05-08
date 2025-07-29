@@ -11,19 +11,20 @@ const Historico = () => {
     try {
       const dados = localStorage.getItem('pedidos');
       pedidosSalvos = dados ? JSON.parse(dados) : [];
+      // Garantir que é um array
+      if (!Array.isArray(pedidosSalvos)) {
+        pedidosSalvos = [];
+      }
     } catch {
       pedidosSalvos = [];
     }
 
-    const agora = new Date();
-    const pedidosFiltrados = pedidosSalvos.filter(pedido => {
-      const dataPedido = new Date(pedido.dataPedido);
-      const diffHoras = (agora - dataPedido) / (1000 * 60 * 60);
-      return diffHoras <= 24 || pedido.status === 'aceito' || pedido.status === 'pago';
-    });
+    // Filtrar pedidos válidos
+    const pedidosValidos = pedidosSalvos.filter(pedido => 
+      pedido && typeof pedido === 'object'
+    );
 
-    localStorage.setItem('pedidos', JSON.stringify(pedidosFiltrados));
-    setPedidos(pedidosFiltrados);
+    setPedidos(pedidosValidos);
   };
 
   useEffect(() => {
@@ -84,7 +85,8 @@ const Historico = () => {
         { nome: 'Refrigerante', quantidade: 1, preco: 4.5 }
       ],
       formaPagamento: 'Pix',
-      status: 'pendente'
+      status: 'pendente',
+      total: 14.5
     };
 
     const pedidosAtualizados = [...pedidos, pedidoExemplo];
@@ -93,11 +95,16 @@ const Historico = () => {
   };
 
   const formatarData = (dataISO) => {
-    const data = new Date(dataISO);
-    return data.toLocaleString('pt-BR', {
-      day: '2-digit', month: '2-digit', year: 'numeric',
-      hour: '2-digit', minute: '2-digit'
-    });
+    try {
+      const data = new Date(dataISO);
+      if (isNaN(data.getTime())) return 'Data inválida';
+      return data.toLocaleString('pt-BR', {
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    } catch {
+      return 'Data inválida';
+    }
   };
 
   return (
@@ -131,13 +138,21 @@ const Historico = () => {
                 </div>
 
                 <div className="produtos-pedido">
-                  {pedido.produtos.map((p, idx) => (
+                  {pedido.produtos && Array.isArray(pedido.produtos) && pedido.produtos.map((p, idx) => (
                     <div key={idx} className="produto-item">
-                      <span>{p.nome}</span>
-                      <span>Qtd: {p.quantidade}</span>
-                      <span>R$ {(p.preco * p.quantidade).toFixed(2)}</span>
+                      <span>{p.nome || 'Produto'}</span>
+                      <span>Qtd: {p.quantidade || 0}</span>
+                      <span>R$ {((p.preco || 0) * (p.quantidade || 0)).toFixed(2)}</span>
                     </div>
                   ))}
+                  <div className="total-pedido">
+                    <strong>Total: R$ {pedido.total ? pedido.total.toFixed(2) : 
+                      (pedido.produtos && Array.isArray(pedido.produtos) ? 
+                        pedido.produtos.reduce((sum, p) => sum + ((p.preco || 0) * (p.quantidade || 0)), 0).toFixed(2) : 
+                        '0.00'
+                      )}
+                    </strong>
+                  </div>
                 </div>
 
                 {pedido.status === 'cancelado' && (

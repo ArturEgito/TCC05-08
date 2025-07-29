@@ -1,161 +1,159 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiClock, FiShoppingCart, FiUser, FiSmartphone, FiChevronRight } from 'react-icons/fi';
-import './Telainicial.css';
+import {
+  FiClock,
+  FiShoppingCart,
+  FiUser,
+  FiSmartphone,
+  FiTrendingUp,
+  FiStar
+} from 'react-icons/fi';
+import './telainicio-specific.css';
 
 const Telainicial = () => {
   return (
-    <div className="home-container">
-      {/* Header com navegação */}
-      <header className="app-header">
-        <div className="header-content">
-          <h1 className="app-logo">FinnTech</h1>
-          <nav className="nav-menu">
-            {['Início', 'Menu', 'Perfil', 'Carrinho', 'Pedidos'].map((item) => {
-              const rota = item === 'Perfil' ? '/paginaeditarperfil' : `/${item.toLowerCase()}`;
-              return (
-                <Link 
-                  key={item}
-                  to={rota}
-                  className="nav-item"
-                >
-                  {item}
-                  <div className="nav-underline"></div>
-                </Link>
-              );
-            })}
-          </nav>
+    <div className="telainicio-container">
+      {/* Header */}
+      <header className="telainicio-header">
+        <div className="telainicio-logo-container">
+          <h1 className="telainicio-logo">🍽️ FinnFood</h1>
+          <span className="telainicio-logo-subtitle">Cantina Inteligente</span>
         </div>
+        <nav className="telainicio-nav">
+          <Link to="/telainicial" className="telainicio-nav-link active">🏠 Início</Link>
+          <Link to="/menu" className="telainicio-nav-link">🍕 Menu</Link>
+          <Link to="/carrinho" className="telainicio-nav-link">🛒 Carrinho</Link>
+          <Link to="/paginaeditarperfil" className="telainicio-nav-link">👤 Perfil</Link>
+          <Link to="/pedidos" className="telainicio-nav-link">📦 Pedidos</Link>
+        </nav>
       </header>
 
-      {/* Seção Hero */}
-      <section className="hero-section">
-        <div className="hero-gradient"></div>
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1 className="hero-title">
-              <span className="title-gradient">Cantina Inteligente</span>
-              <br />
-              do Futuro
+      {/* Conteúdo principal */}
+      <main className="telainicio-main">
+        <section className="telainicio-hero-section">
+          <div className="telainicio-hero-content">
+            <div className="telainicio-hero-badge">
+              <FiStar className="telainicio-badge-icon" />
+              <span>Sistema Premiado</span>
+            </div>
+            <h1 className="telainicio-hero-title">
+              <span className="telainicio-title-highlight">Sua</span> cantina
+              <span className="telainicio-title-gradient"> digital favorita</span>
             </h1>
-            <p className="hero-description">
-              Transforme sua experiência na cantina com tecnologia de ponta para pedidos rápidos, 
-              pagamentos seguros e zero filas.
+            <p className="telainicio-hero-description">
+              Desfrute da melhor experiência em cantina escolar com nossa plataforma moderna.
+              Peça seus lanches favoritos, pague com segurança e retire sem filas.
             </p>
-            <div className="cta-group">
-              <Link to="/menu" className="cta-button primary">
-                Explorar Menu
-                <FiChevronRight className="cta-icon" />
+            <div className="telainicio-hero-buttons">
+              <Link to="/menu" className="telainicio-cta-primary">
+                <FiShoppingCart className="telainicio-btn-icon" />
+                Ver Menu
+                <span className="telainicio-btn-shine"></span>
               </Link>
-              <Link to="/pedidos" className="cta-button secondary">
+              <Link to="/pedidos" className="telainicio-cta-secondary">
+                <FiTrendingUp className="telainicio-btn-icon" />
                 Meus Pedidos
               </Link>
             </div>
           </div>
-          <div className="hero-visual">
-            <div className="visual-card">
-              <div className="card-animation"></div>
-              <img 
-                src="https://i.imgur.com/3Q1WcHy.png" 
-                alt="App Preview" 
-                className="app-preview" 
-              />
+          <div className="telainicio-hero-visual">
+            <div className="telainicio-floating-card telainicio-card-1">
+              <FiShoppingCart className="telainicio-card-icon" />
+              <span>Pedidos Rápidos</span>
+            </div>
+            <div className="telainicio-floating-card telainicio-card-2">
+              <FiClock className="telainicio-card-icon" />
+              <span>Sem Filas</span>
+            </div>
+            <div className="telainicio-floating-card telainicio-card-3">
+              <FiUser className="telainicio-card-icon" />
+              <span>Perfil Personalizado</span>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Seção de Recursos */}
-      <section className="features-section">
-        <div className="section-decor"></div>
-        <h2 className="section-title">
-          <span className="title-highlight">Porque escolher</span>
-          <br />
-          a FinnTech?
-        </h2>
-        
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="feature-card"
-              style={{ '--delay': index * 0.1 + 's' }}
-            >
-              <div className="card-icon">{feature.icon}</div>
-              <h3 className="card-title">{feature.title}</h3>
-              <p className="card-description">{feature.description}</p>
+        {/* Seção de recursos */}
+        <section className="features-section">
+          <div className="section-header">
+            <h2 className="section-title">
+              <span className="title-decoration">✨</span>
+              Por que escolher FinnFood?
+              <span className="title-decoration">✨</span>
+            </h2>
+            <div className="title-underline"></div>
+          </div>
+          
+          <div className="features-grid">
+            <FeatureCard
+              icon={<FiClock className="feature-icon" />}
+              title="Pedidos Rápidos"
+              description="Faça seu pedido em segundos e retire no horário que escolher"
+              color="#ff6b6b"
+            />
+            <FeatureCard
+              icon={<FiShoppingCart className="feature-icon" />}
+              title="Pagamento Seguro"
+              description="Múltiplas formas de pagamento com total segurança"
+              color="#4ecdc4"
+            />
+            <FeatureCard
+              icon={<FiUser className="feature-icon" />}
+              title="Perfil Personalizado"
+              description="Histórico de pedidos e preferências salvas"
+              color="#45b7d1"
+            />
+            <FeatureCard
+              icon={<FiSmartphone className="feature-icon" />}
+              title="Acesso Mobile"
+              description="Use em qualquer dispositivo, a qualquer hora"
+              color="#f9ca24"
+            />
+          </div>
+        </section>
+
+        {/* Seção de estatísticas */}
+        <section className="telainicio-stats-section">
+          <div className="telainicio-stats-grid">
+            <div className="telainicio-stat-item">
+              <div className="telainicio-stat-number">1000+</div>
+              <div className="telainicio-stat-label">Pedidos Realizados</div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="app-footer">
-        <div className="footer-wave"></div>
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3 className="brand-title">FinnTech</h3>
-            <p className="brand-slogan">Inovação em cada bite</p>
-            <div className="social-links">
-              {socials.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.link}
-                  className="social-item"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <div className="telainicio-stat-item">
+              <div className="telainicio-stat-number">99%</div>
+              <div className="telainicio-stat-label">Satisfação dos Alunos</div>
+            </div>
+            <div className="telainicio-stat-item">
+              <div className="telainicio-stat-number">24/7</div>
+              <div className="telainicio-stat-label">Disponível Sempre</div>
+            </div>
+            <div className="telainicio-stat-item">
+              <div className="telainicio-stat-number">50+</div>
+              <div className="telainicio-stat-label">Produtos Disponíveis</div>
             </div>
           </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p className="copyright">
-            © 2024 FinnTech. Todos os direitos reservados.
-          </p>
-          <div className="legal-links">
-            {['Termos de Uso', 'Política de Privacidade', 'Cookies'].map((item) => (
-              <Link key={item} to="/legal" className="legal-item">{item}</Link>
-            ))}
-          </div>
-        </div>
-      </footer>
+        </section>
+      </main>
     </div>
   );
 };
 
-// Dados das features
-const features = [
-  {
-    icon: <FiClock size={32} />,
-    title: 'Agendamento Inteligente',
-    description: 'Escolha ideal para retirada sem filas'
-  },
-  {
-    icon: <FiShoppingCart size={32} />,
-    title: 'Checkout Rápido',
-    description: 'Pagamento seguro'
-  },
-  {
-    icon: <FiUser size={32} />,
-    title: 'Perfil Personalizado',
-    description: 'Diversas formas de pagamento'
-  },
-  {
-    icon: <FiSmartphone size={32} />,
-    title: 'App Mobile',
-    description: 'Disponível para  Android'
-  }
-];
-
-// Dados das redes sociais
-const socials = [
-  { icon: <FiSmartphone />, link: '/' },
-  { icon: <FiClock />, link: '/' },
-  { icon: <FiShoppingCart />, link: '/' }
-];
+// Componente reutilizável para os cards
+const FeatureCard = ({ icon, title, description, color }) => (
+  <div className="feature-card" style={{ '--card-color': color }}>
+    <div className="card-header">
+      <div className="icon-container">
+        {icon}
+        <div className="icon-glow"></div>
+      </div>
+    </div>
+    <div className="card-content">
+      <h3 className="card-title">{title}</h3>
+      <p className="card-description">{description}</p>
+    </div>
+    <div className="card-footer">
+      <span className="learn-more">Saiba mais →</span>
+    </div>
+  </div>
+);
 
 export default Telainicial;

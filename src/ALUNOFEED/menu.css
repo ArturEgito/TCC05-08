@@ -1,8 +1,10 @@
 :root {
-  --cor-primaria: #ff4757;
-  --cor-secundaria: #2ed573;
-  --cor-fundo: #f1f2f6;
-  --sombra: 0 10px 20px rgba(0,0,0,0.1);
+  --cor-primaria: #ff6b35;
+  --cor-secundaria: #4ecdc4;
+  --cor-accent: #ffe66d;
+  --cor-fundo: #ecf0f1;
+  --sombra: 0 8px 25px rgba(0,0,0,0.12);
+  --gradient-primary: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
 }
 
 body {
@@ -92,18 +94,38 @@ body {
 }
 
 .menu-item {
-  background: white;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--sombra);
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .menu-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.menu-item:hover::before {
+  transform: scaleX(1);
 }
 
 .imagem-container {
@@ -191,16 +213,18 @@ body {
 
 .menu-botao {
   position: relative;
-  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  padding: 0.8rem 1.8rem;
-  border-radius: 15px;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.3s ease;
-  margin-top: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 0.8rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .efeito-botao {
@@ -219,25 +243,40 @@ body {
 }
 
 .menu-botao:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.menu-botao:active {
+  transform: translateY(-1px) scale(1.02);
 }
 
 .voltar-botao {
   position: fixed;
   top: 30px;
   left: 30px;
-  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-  color: white;
-  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: var(--cor-primaria);
+  border: 2px solid rgba(255, 107, 53, 0.2);
   padding: 12px 24px;
-  border-radius: 15px;
+  border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
   z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.voltar-botao:hover {
+  background: var(--gradient-primary);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
 }
 
 .seta {

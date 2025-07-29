@@ -60,7 +60,8 @@ function Paginaeditarperfil() {
 
   return (
     <div className="profile-edit-container">
-      <div className="profile-header">
+      <div className="profile-content">
+        <div className="profile-header">
         <button className="back-btn" onClick={() => navigate(-1)}>
           Voltar
         </button>
@@ -152,6 +153,7 @@ function Paginaeditarperfil() {
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 }

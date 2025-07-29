@@ -1,9 +1,10 @@
 /* Entraraluno.css */
 :root {
-  --food-red: #EA1D2C;
-  --food-yellow: #FFC72C;
-  --food-gray: #F7F7F7;
-  --food-dark: #3F3F3F;
+  --food-red: #ff6b35;
+  --food-yellow: #ffe66d;
+  --food-gray: #ecf0f1;
+  --food-dark: #2c3e50;
+  --gradient: linear-gradient(135deg, var(--food-red), #4ecdc4);
 }
 
 * {
@@ -15,13 +16,30 @@
 
 .food-app-container {
   min-height: 100vh;
-  background: linear-gradient(45deg, var(--food-red), #FF6B6B);
+  background: var(--gradient);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   position: relative;
   overflow: hidden;
+}
+
+.food-app-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-50px, -50px) rotate(360deg); }
 }
 
 .food-background {
@@ -54,14 +72,27 @@
 }
 
 .food-main-card {
-  background: white;
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  padding: 2.5rem;
   width: 100%;
   max-width: 500px;
   z-index: 2;
   position: relative;
+  overflow: hidden;
+}
+
+.food-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient);
 }
 
 .food-brand-header {
