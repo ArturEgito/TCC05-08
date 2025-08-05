@@ -1,8 +1,10 @@
+import httpClient from '../../api/httpClient';
+import API_ROUTES from '../../api/routes';
 import http from '../../common/http-common';
 const API_URL = "escola/";
 
 const create = (data) => {
-    return http.mainInstance.post(API_URL + "create", {
+    return httpClient.post(API_ROUTES.ESCOLA.CREATE, {
         nome: data.nome,
         cnpj: data.cnpj,
         email: data.email,
@@ -17,7 +19,7 @@ const create = (data) => {
 };
 
 const login = async (email, senha) => {
-    const response = await http.mainInstance.post(API_URL + "login", {
+    const response = await httpClient.post(API_ROUTES.AUTH.LOGIN_ESCOLA, {
         email,
         senha,
     });
@@ -25,6 +27,26 @@ const login = async (email, senha) => {
         localStorage.setItem("escola", JSON.stringify(response.data));
     }
     return response.data;
+};
+
+const findAll = () => {
+    return httpClient.get(API_ROUTES.ESCOLA.FIND_ALL);
+};
+
+const findById = (id) => {
+    return httpClient.get(API_ROUTES.ESCOLA.FIND_BY_ID(id));
+};
+
+const update = (id, data) => {
+    return httpClient.put(API_ROUTES.ESCOLA.UPDATE(id), data);
+};
+
+const inativar = (id) => {
+    return httpClient.put(API_ROUTES.ESCOLA.INATIVAR(id));
+};
+
+const reativar = (id) => {
+    return httpClient.put(API_ROUTES.ESCOLA.REATIVAR(id));
 };
 
 const logout = () => {
@@ -36,10 +58,15 @@ const getCurrentEscola = () => {
 };
 
 const EscolaService = {
+    findAll,
+    findById,
     create,
+    update,
     login,
     logout,
     getCurrentEscola,
+    inativar,
+    reativar,
 }
 
 export default EscolaService;

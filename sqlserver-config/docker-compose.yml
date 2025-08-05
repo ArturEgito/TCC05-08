@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cantina-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD="@ITB123456"
+      - MSSQL_PID=Express
+    user: "0:0"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+    restart: unless-stopped
+    networks:
+      - cantina-network
+
+volumes:
+  sqlserver_data:
+
+networks:
+  cantina-network:
+    driver: bridge

@@ -1,16 +1,18 @@
+import httpClient, { uploadClient } from '../../api/httpClient';
+import API_ROUTES from '../../api/routes';
 import http from "../../common/http-common";
 const API_URL = "promocao/";
 
 const findAll = () => {
-  return http.mainInstance.get(API_URL + "findAll");
+  return httpClient.get(API_ROUTES.PROMOCAO.FIND_ALL);
 };
 
 const findAllAtivos = () => {
-  return http.mainInstance.get(API_URL + "findAllAtivos");
+  return httpClient.get(API_ROUTES.PROMOCAO.FIND_ALL_ATIVOS);
 };
 
 const findById = id => {
-  return http.mainInstance.get(API_URL + `findById/${id}`);
+  return httpClient.get(API_ROUTES.PROMOCAO.FIND_BY_ID(id));
 };
 
 const addPromocao = (file, data, usuario) => {
@@ -21,11 +23,7 @@ const addPromocao = (file, data, usuario) => {
   formData.append('info', data.info);
   formData.append('usuario', usuario.id);
 
-  for (const key of formData.entries()) {
-    console.log(key[0] + ', ' + key[1]);
-  } 
-
-  return http.multipartInstance.post(API_URL + "addPromocao", formData);
+  return uploadClient.post(API_ROUTES.PROMOCAO.CREATE, formData);
 };
 
 const alterar = (file, id, data, usuario) => {
@@ -36,16 +34,15 @@ const alterar = (file, id, data, usuario) => {
   formData.append('info', data.info);
   formData.append('usuario', usuario.id);
 
-/*
-  for (const key of formData.entries()) {
-    console.log(key[0] + ', ' + key[1]);
-  } 
-*/
-  return http.multipartInstance.put(API_URL + `alterar/${id}`, formData);
+  return uploadClient.put(API_ROUTES.PROMOCAO.UPDATE(id), formData);
 };
 
 const inativar = (id) => {
-  return http.mainInstance.put(API_URL + `inativar/${id}`);
+  return httpClient.put(API_ROUTES.PROMOCAO.INATIVAR(id));
+};
+
+const ativar = (id) => {
+  return httpClient.put(API_ROUTES.PROMOCAO.ATIVAR(id));
 };
 
 
@@ -56,6 +53,7 @@ const PromocaoService = {
   addPromocao,
   alterar,
   inativar,
+  ativar,
 };
 
 export default PromocaoService;

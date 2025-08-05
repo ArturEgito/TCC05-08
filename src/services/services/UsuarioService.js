@@ -1,16 +1,18 @@
+import httpClient from '../../api/httpClient';
+import API_ROUTES from '../../api/routes';
 import http from '../../common/http-common';
 const API_URL = "usuario/";
 
 const findAll = () => {
-    return http.mainInstance.get(API_URL + 'findAll');
+    return httpClient.get(API_ROUTES.USUARIO.FIND_ALL);
 };
 
 const findById = (id) => {
-    return http.mainInstance.get(API_URL + `findById/${id}`);
+    return httpClient.get(API_ROUTES.USUARIO.FIND_BY_ID(id));
 };
 
 const signup = (nome, email, password) => {
-    return http.mainInstance.post(API_URL + "signup", {
+    return httpClient.post(API_ROUTES.USUARIO.SIGNUP, {
         nome,
         email,
         password,
@@ -18,11 +20,10 @@ const signup = (nome, email, password) => {
 };
 
 const signin = async (email, senha) => {
-    const response = await http.mainInstance
-        .post(API_URL + "login", {
-            email,
-            senha,
-        });
+    const response = await httpClient.post(API_ROUTES.AUTH.LOGIN_USUARIO, {
+        email,
+        senha,
+    });
     if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
     }
@@ -38,51 +39,61 @@ const getCurrentUser = () => {
 };
 
 const create = data => {
-    const formData = new FormData();
-    formData.append('nome', data.nome);
-    formData.append('email', data.email);
-    formData.append('nivelAcesso', data.nivelAcesso);
-
-    return http.mainInstance.post(API_URL + "create", formData);
+    return httpClient.post(API_ROUTES.USUARIO.CREATE, {
+        nome: data.nome,
+        email: data.email,
+        nivelAcesso: data.nivelAcesso
+    });
 };
 
 const update = (id, data) => {
-    return http.multipartInstance.put(API_URL + `update/${id}`, data);
+    return httpClient.put(API_ROUTES.USUARIO.UPDATE(id), data);
 };
 
 const inativar = (id) => {
-    return http.multipartInstance.put(API_URL + `inativar/${id}`);
+    return httpClient.put(API_ROUTES.USUARIO.INATIVAR(id));
 };
 
 const reativar = (id) => {
-    return http.multipartInstance.put(API_URL + `reativar/${id}`);
+    return httpClient.put(API_ROUTES.USUARIO.REATIVAR(id));
 };
 
 const alterarSenha = (id, data) => {
-    const formData = new FormData();
-    formData.append('senha', data.senha);
- 
-    return http.mainInstance.put(API_URL + `alterarSenha/${id}`, formData);
+    return httpClient.put(API_ROUTES.USUARIO.CHANGE_PASSWORD(id), {
+        senha: data.senha
+    });
 };
 
 const findByNome = nome => {
-    return http.mainInstance.get(API_URL + `findByNome?nome=${nome}`);
+    return httpClient.get(API_ROUTES.USUARIO.FIND_BY_NOME, {
+        params: { nome }
+    });
+};
+
+const findByEmail = (email) => {
+    return httpClient.get(API_ROUTES.USUARIO.FIND_BY_EMAIL(email));
+};
+
+const updateProfile = (id, data) => {
+    return httpClient.put(API_ROUTES.USUARIO.UPDATE_PROFILE(id), data);
 };
 
 
 const UsuarioService = {
     findAll,
     findById,
+    findByEmail,
+    findByNome,
     signup,
     signin,
     logout,
     getCurrentUser,
     create,
     update,
+    updateProfile,
     inativar,
     reativar,
     alterarSenha,
-    findByNome,
 }
 
 export default UsuarioService;

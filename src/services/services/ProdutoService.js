@@ -1,12 +1,14 @@
+import httpClient, { uploadClient } from '../../api/httpClient';
+import API_ROUTES from '../../api/routes';
 import http from "../../common/http-common";
 const API_URL = "produto/";
 
 const findAll = () => {
-  return http.mainInstance.get(API_URL + "findAll");
+  return httpClient.get(API_ROUTES.PRODUTO.FIND_ALL);
 };
 
 const findById = id => {
-  return http.mainInstance.get(API_URL + `findById/${id}`);
+  return httpClient.get(API_ROUTES.PRODUTO.FIND_BY_ID(id));
 };
 
 const createSemFoto = (data) => {
@@ -74,18 +76,35 @@ const addCardapio = (id) => {
 };
 
 const findAllCardapio = () => {
-  return http.mainInstance.get(API_URL + "findAllCardapio");
+  return httpClient.get(API_ROUTES.PRODUTO.FIND_ALL_CARDAPIO);
+};
+
+const findByCategoria = (categoriaId) => {
+  return httpClient.get(API_ROUTES.PRODUTO.FIND_BY_CATEGORIA(categoriaId));
+};
+
+const findByNome = (nome) => {
+  return httpClient.get(API_ROUTES.PRODUTO.FIND_BY_NOME, {
+    params: { nome }
+  });
+};
+
+const removeCardapio = (id) => {
+  return httpClient.put(API_ROUTES.PRODUTO.REMOVE_CARDAPIO(id));
 };
 
 const ProdutoService = {
   findAll,
   findById,
+  findByCategoria,
+  findByNome,
   createSemFoto,
   createComFoto,
   alterar,
   inativar,
   reativar,
   addCardapio,
+  removeCardapio,
   findAllCardapio
 };
 

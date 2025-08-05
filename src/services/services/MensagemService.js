@@ -1,34 +1,37 @@
+import httpClient from '../../api/httpClient';
+import API_ROUTES from '../../api/routes';
 import http from '../../common/http-common';
 const API_URL = "mensagem/";
 
 const findAll = () => {
-    return http.mainInstance.get(API_URL + 'findAll');
+    return httpClient.get(API_ROUTES.MENSAGEM.FIND_ALL);
 };
 
 const findById = (id) => {
-    return http.mainInstance.get(API_URL + `findById/${id}`);
+    return httpClient.get(API_ROUTES.MENSAGEM.FIND_BY_ID(id));
 };
 
 const findByEmail = (email) => {
-    return http.mainInstance.get(API_URL + `findByEmail`, { email });
+    return httpClient.get(API_ROUTES.MENSAGEM.FIND_BY_EMAIL, {
+        params: { email }
+    });
 };
 
 const create = data => {
-    const formData = new FormData();
-    formData.append('emissorMensagem', data.emissorMensagem);
-    formData.append('email', data.email);
-    formData.append('telefone', data.telefone);
-    formData.append('texto', data.texto);
-
-    return http.mainInstance.post(API_URL + "create", formData);
+    return httpClient.post(API_ROUTES.MENSAGEM.CREATE, {
+        emissorMensagem: data.emissorMensagem,
+        email: data.email,
+        telefone: data.telefone,
+        texto: data.texto
+    });
 };
 
 const inativar = (id) => {
-    return http.mainInstance.put(API_URL + `inativar/${id}`);
+    return httpClient.put(API_ROUTES.MENSAGEM.INATIVAR(id));
 };
 
 const marcarComoLida = (id) => {
-    return http.mainInstance.put(API_URL + `marcarComoLida/${id}`);
+    return httpClient.put(API_ROUTES.MENSAGEM.MARCAR_COMO_LIDA(id));
 };
 
 const MensagemService = {
